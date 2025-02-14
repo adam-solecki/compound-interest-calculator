@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h2>Compound Interest Calculator</h2>
-        <h3>Your investment strategy</h3> <!-- Subheading -->
+        <h3>Your investment strategy</h3>
 
         <label for="principal">Initial deposit:</label>
         <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)">
@@ -44,8 +44,10 @@
         <button onclick="calculateInterest()">Calculate</button>
         <p id="result"></p>
 
-        <!-- Graph will appear here -->
-        <canvas id="investmentChart" style="display: none;"></canvas>
+        <!-- Graph inside a properly sized container -->
+        <div class="chart-container">
+            <canvas id="investmentChart"></canvas>
+        </div>
     </div>
 
     <script src="script.js"></script>
