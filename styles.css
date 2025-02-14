@@ -23,7 +23,7 @@ body {
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
-  color: #163028;
+  color: #163028; /* Brand colour */
 }
 
 /* Subheading for investment strategy */
@@ -63,7 +63,7 @@ input::placeholder {
 }
 
 button {
-  background: #33636D;
+  background: #33636D; /* Updated brand colour */
   color: white;
   border: none;
   cursor: pointer;
@@ -93,7 +93,7 @@ button:hover {
 .results-container h3 {
   font-size: 2em;
   margin-bottom: 15px;
-  color: #163028;
+  color: #163028; /* Brand colour for Results heading */
   text-align: left;
 }
 
