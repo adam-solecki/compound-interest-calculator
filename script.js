@@ -16,37 +16,42 @@ function calculateInterest() {
     }
 
     let n = compounds; // Compounding periods per year
+    let f = contributionFrequency; // Deposit frequency per year
     let t = years;
     let r = rate;
 
-    // Corrected Compound Interest Formula
-    let amount = principal * Math.pow((1 + r / n), (n * t));
+    // 1️⃣ Compound the Initial Deposit Over Time
+    let initialAmount = principal * Math.pow((1 + r / n), (n * t));
 
+    // 2️⃣ Compound Regular Deposits Over Time
+    let contributionAmount = 0;
     if (r > 0) {
-        amount += contribution * ((Math.pow(1 + (r / n), n * t) - 1) / (r / n));
+        contributionAmount = contribution * ((Math.pow(1 + (r / n), n * t) - 1) / (r / n));
     } else {
-        // If interest rate is 0, simply add all contributions
-        amount += contribution * contributionFrequency * t;
+        contributionAmount = contribution * f * t; // If interest rate is 0, simple addition
     }
 
-    // Create data points for the graph
+    let finalAmount = initialAmount + contributionAmount;
+
+    // 3️⃣ Generate Data for the Graph
     let values = [];
     let yearsArray = [];
 
     for (let i = 0; i <= t; i++) {
-        let tempAmount = principal * Math.pow((1 + r / n), (n * i));
+        let tempInitial = principal * Math.pow((1 + r / n), (n * i));
+        let tempContribution = 0;
 
         if (r > 0) {
-            tempAmount += contribution * ((Math.pow(1 + (r / n), n * i) - 1) / (r / n));
+            tempContribution = contribution * ((Math.pow(1 + (r / n), n * i) - 1) / (r / n));
         } else {
-            tempAmount += contribution * contributionFrequency * i;
+            tempContribution = contribution * f * i;
         }
 
-        values.push(tempAmount);
+        values.push(tempInitial + tempContribution);
         yearsArray.push(i);
     }
 
-    let formattedAmount = amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
 
