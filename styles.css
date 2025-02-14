@@ -6,7 +6,7 @@ body {
   background-color: #f4f4f4;
   color: #141414;
   margin: 0;
-  padding: 30px 10px; /* Increased top and bottom padding */
+  padding: 30px 10px;
 }
 
 .container {
@@ -16,18 +16,21 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 100%;
-  max-width: 700px; /* Increased width from 500px to 700px */
+  max-width: 700px;
 }
 
+/* Compound Interest Calculator heading */
 h2 {
-  font-size: 2em; /* Increased size */
+  font-size: 2em;
   margin-bottom: 5px;
+  color: #163028;
 }
 
-h3 {
+/* Subheading for investment strategy */
+.subheading {
   font-size: 1.2em;
-  color: #5ba897;
   margin-bottom: 25px;
+  color: black;
 }
 
 label {
@@ -60,7 +63,7 @@ input::placeholder {
 }
 
 button {
-  background: #5ba897;
+  background: #33636D;
   color: white;
   border: none;
   cursor: pointer;
@@ -72,26 +75,25 @@ button {
 }
 
 button:hover {
-  background: #4e8f7c;
+  background: #2b4d55;
 }
 
 /* Results Section */
 .results-container {
   background: white;
-  /* Reduced top padding from 50px to 20px while keeping side and bottom padding */
   padding: 20px 50px 50px 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: left; /* Left-align text */
+  text-align: left;
   width: 100%;
-  max-width: 700px; /* Increased width from 500px to 700px */
+  max-width: 700px;
   margin-top: 30px;
 }
 
 .results-container h3 {
-  font-size: 2em; /* Match size of calculator title */
+  font-size: 2em;
   margin-bottom: 15px;
-  color: #141414;
+  color: #163028;
   text-align: left;
 }
 
@@ -99,7 +101,7 @@ button:hover {
 .chart-container {
   margin-top: 20px;
   width: 100%;
-  max-width: 700px; /* Increased width from 500px to 700px */
-  height: 350px; /* Increase height for better visibility */
+  max-width: 700px;
+  height: 350px;
   display: none;
 }
