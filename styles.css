@@ -6,7 +6,7 @@ body {
     height: 100vh;
     background-color: #f4f4f4;
     color: #141414;
-    margin: 0; /* Reducing page margins */
+    margin: 0; /* Removed extra page margins */
 }
 
 .container {
@@ -32,6 +32,7 @@ button {
     border: none;
     cursor: pointer;
     font-weight: bold;
+    transition: background 0.3s;
 }
 
 button:hover {
