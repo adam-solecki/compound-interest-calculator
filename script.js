@@ -35,6 +35,7 @@ function calculateInterest() {
 
     document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
 
+    document.getElementById("resultsContainer").style.display = "block"; // Show results section
     drawChart(yearsArray, values);
 }
 
@@ -45,7 +46,7 @@ function drawChart(labels, data) {
     let ctx = document.getElementById("investmentChart").getContext("2d");
 
     if (window.myChart) {
-        window.myChart.destroy(); // Destroy existing chart before creating a new one
+        window.myChart.destroy();
     }
 
     window.myChart = new Chart(ctx, {
@@ -64,21 +65,11 @@ function drawChart(labels, data) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            aspectRatio: 2.5, // Makes it wider (horizontal)
+            aspectRatio: 2.5,
             scales: {
                 x: { title: { display: true, text: 'Years' } },
                 y: { title: { display: true, text: 'Investment Value ($)' } }
             }
         }
     });
-}
-
-function formatCurrency(input) {
-    let value = input.value.replace(/[^0-9.]/g, '');
-    input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
-}
-
-function formatPercentage(input) {
-    let value = input.value.replace(/[^0-9.]/g, '');
-    input.value = value ? value + "%" : "0%";
 }
