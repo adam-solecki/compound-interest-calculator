@@ -3,7 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Matches outer background */
     color: #141414;
     margin: 0;
     padding: 10px;
@@ -75,9 +75,10 @@ button:hover {
     background: #4e8f7c;
 }
 
-/* Spacer to separate the calculator from results */
+/* Removed dark grey spacer */
 .spacer {
     height: 30px;
+    background: transparent; /* No color, blends with background */
 }
 
 /* Results Section */
