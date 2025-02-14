@@ -4,7 +4,7 @@ function calculateInterest() {
     let rateRaw = document.getElementById("rate").value.replace(/[^0-9.]/g, '');
     let years = parseFloat(document.getElementById("years").value);
     let compounds = parseInt(document.getElementById("compounds").value);
-    let contributionFrequency = parseInt(document.getElementById("contributionFrequency").value);
+    let depositFrequency = parseInt(document.getElementById("contributionFrequency").value);
 
     let principal = parseFloat(principalRaw) || 0;
     let contribution = parseFloat(contributionRaw) || 0;
@@ -16,38 +16,32 @@ function calculateInterest() {
     }
 
     let n = compounds; // Number of times interest compounds per year
-    let f = contributionFrequency; // Number of deposits per year
+    let f = depositFrequency; // Number of deposits per year
     let t = years;
     let r = rate;
 
     // ✅ Correctly compound the initial deposit over time
-    let initialAmount = principal * Math.pow((1 + r / n), (n * t));
+    let finalAmount = principal * Math.pow((1 + r / n), (n * t));
 
-    // ✅ Correctly compound regular deposits over time
-    let contributionAmount = 0;
-    if (r > 0) {
-        contributionAmount = contribution * ((Math.pow(1 + (r / n), n * t) - 1) / (r / n)) * (1 + (r / n));
-    } else {
-        contributionAmount = contribution * f * t; // If rate = 0, simple addition
+    // ✅ Add each regular deposit at its deposit frequency and compound it
+    for (let i = 1; i <= t * f; i++) {
+        let yearsRemaining = (t * f - i) / f;
+        finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
-
-    let finalAmount = initialAmount + contributionAmount;
 
     // ✅ Generate correct data for the graph
     let values = [];
     let yearsArray = [];
 
     for (let i = 0; i <= t; i++) {
-        let tempInitial = principal * Math.pow((1 + r / n), (n * i));
-        let tempContribution = 0;
-
-        if (r > 0) {
-            tempContribution = contribution * ((Math.pow(1 + (r / n), n * i) - 1) / (r / n)) * (1 + (r / n));
-        } else {
-            tempContribution = contribution * f * i;
+        let tempAmount = principal * Math.pow((1 + r / n), (n * i));
+        
+        for (let j = 1; j <= i * f; j++) {
+            let yearsRemaining = (i * f - j) / f;
+            tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
         }
 
-        values.push(tempInitial + tempContribution);
+        values.push(tempAmount);
         yearsArray.push(i);
     }
 
