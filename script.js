@@ -104,6 +104,11 @@ function drawChart(labels, investmentData, depositData) {
                 tooltip: {
                     mode: 'index', // Combine tooltips
                     intersect: false, // Show both lines' values at the same time
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Darker background for readability
+                    padding: 12, // Increased padding
+                    cornerRadius: 8, // Rounded edges for style
+                    titleMarginBottom: 6, // Space between title and content
+                    bodySpacing: 6, // Space between lines inside tooltip
                     callbacks: {
                         title: function (tooltipItems) {
                             return `Year ${tooltipItems[0].label}`; // Fix "Year Year X" issue
@@ -111,11 +116,12 @@ function drawChart(labels, investmentData, depositData) {
                         label: function (tooltipItem) {
                             let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
                             let deposits = depositData[tooltipItem.dataIndex];
-                            let gains = investment - deposits;
+                            let percentageGain = ((investment - deposits) / deposits) * 100;
+
                             return [
-                                `Investment Value: $${investment.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
-                                `Total Deposits: $${deposits.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
-                                `Gains: $${gains.toLocaleString(undefined, { minimumFractionDigits: 2 })}`
+                                `Total Investment Value: $${investment.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
+                                `Total Deposit Sum: $${deposits.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
+                                `Percentage Gain: ${percentageGain.toFixed(2)}%`
                             ];
                         }
                     }
