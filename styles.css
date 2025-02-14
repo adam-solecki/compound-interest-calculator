@@ -16,7 +16,7 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 100%;
-  max-width: 500px; /* Increased width */
+  max-width: 700px; /* Increased width from 500px to 700px */
 }
 
 h2 {
@@ -84,7 +84,7 @@ button:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: left; /* Left-align text */
   width: 100%;
-  max-width: 500px; /* Match calculator width */
+  max-width: 700px; /* Increased width from 500px to 700px */
   margin-top: 30px;
 }
 
@@ -99,7 +99,7 @@ button:hover {
 .chart-container {
   margin-top: 20px;
   width: 100%;
-  max-width: 500px; /* Match container */
+  max-width: 700px; /* Increased width from 500px to 700px */
   height: 350px; /* Increase height for better visibility */
   display: none;
 }
