@@ -67,22 +67,6 @@ function drawChart(labels, data) {
             responsive: true,
             maintainAspectRatio: false,
             aspectRatio: 2.5,
-            scales: {
-                x: { title: { display: true, text: 'Years' } },
-                y: { title: { display: true, text: 'Investment Value ($)' } }
-            }
         }
     });
-}
-
-// Format input field with $ sign while typing
-function formatCurrency(input) {
-    let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters
-    input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
-}
-
-// Format input field with % sign while typing
-function formatPercentage(input) {
-    let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters
-    input.value = value ? value + "%" : "0%";
 }
