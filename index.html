@@ -9,15 +9,15 @@
 <body>
     <div class="container">
         <h2>Compound Interest Calculator</h2>
-        <h3>Your investment strategy</h3> <!-- New Subtitle -->
+        <h3>Your investment strategy</h3> <!-- Subheading -->
 
-        <label for="principal">Initial Deposit:</label>
+        <label for="principal">Initial deposit:</label>
         <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)">
 
-        <label for="contribution">Regular contribution:</label>
+        <label for="contribution">Regular deposit:</label>
         <input type="text" id="contribution" placeholder="$0" required oninput="formatCurrency(this)">
 
-        <label for="contributionFrequency">Contribution frequency:</label>
+        <label for="contributionFrequency">Deposit frequency:</label>
         <select id="contributionFrequency">
             <option value="1">Annually</option>
             <option value="12">Monthly</option>
