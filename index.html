@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compound Interest Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
 </head>
 <body>
     <div class="container">
@@ -27,7 +28,7 @@
         </select>
 
         <label for="rate">Annual interest rate (%):</label>
-        <input type="text" id="rate" placeholder="Enter rate" required>
+        <input type="text" id="rate" placeholder="0%" required oninput="formatPercentage(this)">
 
         <label for="years">Number of years:</label>
         <input type="text" id="years" placeholder="Enter years" required>
@@ -42,6 +43,9 @@
 
         <button onclick="calculateInterest()">Calculate</button>
         <p id="result"></p>
+
+        <!-- Graph will appear here -->
+        <canvas id="investmentChart" style="display: none;"></canvas>
     </div>
 
     <script src="script.js"></script>
