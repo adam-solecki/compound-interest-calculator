@@ -9,12 +9,22 @@
 <body>
     <div class="container">
         <h2>Compound Interest Calculator</h2>
-        
-        <label for="principal">Initial Investment Sum ($):</label>
-        <input type="text" id="principal" placeholder="Enter amount" required oninput="formatInput(this)">
+        <h3>Your investment strategy</h3> <!-- New Subtitle -->
 
-        <label for="contribution">Monthly contribution ($):</label>
-        <input type="text" id="contribution" placeholder="Enter amount" required oninput="formatInput(this)">
+        <label for="principal">Initial Deposit:</label>
+        <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)">
+
+        <label for="contribution">Regular contribution:</label>
+        <input type="text" id="contribution" placeholder="$0" required oninput="formatCurrency(this)">
+
+        <label for="contributionFrequency">Contribution frequency:</label>
+        <select id="contributionFrequency">
+            <option value="1">Annually</option>
+            <option value="12">Monthly</option>
+            <option value="26">Fortnightly</option>
+            <option value="52">Weekly</option>
+            <option value="365">Daily</option>
+        </select>
 
         <label for="rate">Annual interest rate (%):</label>
         <input type="text" id="rate" placeholder="Enter rate" required>
