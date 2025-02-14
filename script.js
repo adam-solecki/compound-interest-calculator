@@ -39,11 +39,13 @@ function calculateInterest() {
 }
 
 function drawChart(labels, data) {
+    let chartContainer = document.querySelector(".chart-container");
+    chartContainer.style.display = "block"; // Show graph container
+
     let ctx = document.getElementById("investmentChart").getContext("2d");
-    document.getElementById("investmentChart").style.display = "block";
 
     if (window.myChart) {
-        window.myChart.destroy();
+        window.myChart.destroy(); // Destroy existing chart before creating a new one
     }
 
     window.myChart = new Chart(ctx, {
@@ -51,7 +53,7 @@ function drawChart(labels, data) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Total Investment Value ($)',
+                label: 'Investment Growth ($)',
                 data: data,
                 borderColor: '#5ba897',
                 backgroundColor: 'rgba(91, 168, 151, 0.2)',
@@ -62,6 +64,7 @@ function drawChart(labels, data) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            aspectRatio: 2.5, // Makes it wider (horizontal)
             scales: {
                 x: { title: { display: true, text: 'Years' } },
                 y: { title: { display: true, text: 'Investment Value ($)' } }
