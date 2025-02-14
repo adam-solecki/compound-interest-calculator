@@ -30,7 +30,7 @@ function calculateInterest() {
     let formattedAmount = amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     // Updated result message format
-    document.getElementById("result").innerText = `After ${years} years, your investment sum will be $${formattedAmount}.`;
+    document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
 }
 
 // Format input field with $ sign while typing
