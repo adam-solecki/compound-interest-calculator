@@ -76,8 +76,8 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total Investment Value ($)',
           data: investmentData,
-          borderColor: '#5ba897',
-          backgroundColor: 'rgba(91, 168, 151, 0.2)',
+          borderColor: '#163028', // Updated to brand colour
+          backgroundColor: 'rgba(22,48,40,0.2)', // Semi-transparent version of #163028
           borderWidth: 2,
           pointRadius: 4,
           pointHoverRadius: 6,
@@ -86,8 +86,8 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total Deposits ($)',
           data: depositData,
-          borderColor: '#f4a261',
-          backgroundColor: 'rgba(244, 162, 97, 0.2)',
+          borderColor: '#33636D', // Updated to brand colour
+          backgroundColor: 'rgba(51,99,109,0.2)', // Semi-transparent version of #33636D
           borderWidth: 2,
           pointRadius: 4,
           pointHoverRadius: 6,
