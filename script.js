@@ -29,7 +29,8 @@ function calculateInterest() {
     // Format final amount with commas
     let formattedAmount = amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    document.getElementById("result").innerText = `Final Amount after ${years} years: $${formattedAmount}`;
+    // Updated result message format
+    document.getElementById("result").innerText = `After ${years} years, your investment sum will be $${formattedAmount}.`;
 }
 
 // Format input field with $ sign while typing
