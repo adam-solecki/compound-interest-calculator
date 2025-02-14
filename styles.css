@@ -6,7 +6,7 @@ body {
     height: 100vh;
     background-color: #f4f4f4;
     color: #141414;
-    margin: 0; /* Removed extra page margins */
+    margin: 0;
 }
 
 .container {
@@ -15,15 +15,28 @@ body {
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 350px; /* Adjusted for better layout */
+    width: 350px;
 }
 
 input, select, button {
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px;
-    width: 100%;
+    width: 90%; /* Ensures fields stay inside the container */
     font-family: Calibri, sans-serif;
     color: #141414;
+    box-sizing: border-box;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="text"]::-webkit-outer-spin-button,
+input[type="text"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Removes number input scrolling */
 }
 
 button {
@@ -33,6 +46,7 @@ button {
     cursor: pointer;
     font-weight: bold;
     transition: background 0.3s;
+    border-radius: 5px;
 }
 
 button:hover {
