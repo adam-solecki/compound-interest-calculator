@@ -11,11 +11,11 @@ body {
 
 .container {
     background: white;
-    padding: 45px;
+    padding: 50px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 360px;
+    width: 380px; /* Slightly wider for better spacing */
 }
 
 h2 {
@@ -25,19 +25,19 @@ h2 {
 h3 {
     font-size: 1.1em;
     color: #5ba897;
-    margin-bottom: 20px; /* More spacing below subheading */
+    margin-bottom: 25px; /* More spacing below subheading */
 }
 
 label {
-    text-align: left; /* Left align labels */
+    text-align: left;
     display: block;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 15px; /* Increased spacing between labels */
 }
 
 input, select, button {
-    margin: 5px 0;
-    padding: 8px;
+    margin: 10px 0; /* Increased spacing between input fields */
+    padding: 10px;
     width: 95%;
     font-family: Calibri, sans-serif;
     color: #141414;
@@ -69,6 +69,7 @@ button {
     font-weight: bold;
     transition: background 0.3s;
     border-radius: 5px;
+    margin-top: 15px; /* More space above button */
 }
 
 button:hover {
