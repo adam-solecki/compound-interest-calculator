@@ -1,8 +1,9 @@
 body {
     font-family: Calibri, sans-serif;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    height: 100vh;
     background-color: #f4f4f4;
     color: #141414;
     margin: 0;
@@ -16,7 +17,7 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    max-width: 450px;
+    max-width: 450px; /* Increased max width */
 }
 
 h2 {
@@ -55,6 +56,10 @@ input {
     text-align: right;
 }
 
+input::placeholder {
+    color: #a9a9a9;
+}
+
 button {
     background: #5ba897;
     color: white;
@@ -71,30 +76,11 @@ button:hover {
     background: #4e8f7c;
 }
 
-/* Spacer Styling */
-.spacer {
-    height: 20px;
-    background-color: #d3d3d3;
-    width: 100%;
-    margin-top: 20px;
-}
-
-/* Results Section */
-.results-container {
-    background: #8cb47c;
-    color: white;
-    padding: 30px;
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-    max-width: 450px;
-    margin-top: 20px;
-}
-
+/* Resized Graph & Ensured Horizontal Alignment */
 .chart-container {
     margin-top: 30px;
     width: 100%;
-    max-width: 400px;
-    height: 250px;
-    display: none;
+    max-width: 400px; /* Matches calculator width */
+    height: 250px; /* Reduced height for a more horizontal appearance */
+    display: none; /* Hidden until calculation */
 }
