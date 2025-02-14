@@ -7,7 +7,7 @@ body {
     background-color: #f4f4f4;
     color: #141414;
     margin: 0;
-    padding: 10px; /* Added padding for better mobile spacing */
+    padding: 10px;
 }
 
 .container {
@@ -17,34 +17,36 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    max-width: 400px; /* Limits max width on larger screens */
+    max-width: 450px; /* Increased max width */
 }
 
 h2 {
-    margin-bottom: 5px; /* Keep heading close */
+    font-size: 1.8em; /* Bigger Title */
+    margin-bottom: 5px;
 }
 
 h3 {
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #5ba897;
-    margin-bottom: 25px; /* More spacing below subheading */
+    margin-bottom: 25px;
 }
 
 label {
     text-align: left;
     display: block;
     font-weight: bold;
+    font-size: 1.1em; /* Bigger Labels */
     margin-top: 15px;
 }
 
 input, select, button {
     margin: 10px 0;
     padding: 12px;
-    width: 100%; /* Full width for better mobile experience */
+    width: 100%;
+    font-size: 1.1em; /* Bigger Inputs */
     font-family: Calibri, sans-serif;
     color: #141414;
     box-sizing: border-box;
-    font-size: 1em; /* Larger text for mobile readability */
 }
 
 input {
@@ -55,13 +57,7 @@ input {
 }
 
 input::placeholder {
-    color: #a9a9a9; /* Faded placeholder */
-}
-
-input[type="text"]::-webkit-outer-spin-button,
-input[type="text"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    color: #a9a9a9;
 }
 
 button {
@@ -70,24 +66,17 @@ button {
     border: none;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.1em; /* Bigger Button */
     transition: background 0.3s;
     border-radius: 5px;
     margin-top: 15px;
-    font-size: 1em;
 }
 
 button:hover {
     background: #4e8f7c;
 }
 
-/* Mobile Optimization */
-@media (max-width: 480px) {
-    .container {
-        padding: 30px; /* Reduce padding on smaller screens */
-        width: 90%; /* Make sure it fits small screens */
-    }
-
-    input, select, button {
-        font-size: 1em; /* Make text slightly bigger for touch screens */
-    }
+canvas {
+    margin-top: 30px;
+    max-width: 100%;
 }
