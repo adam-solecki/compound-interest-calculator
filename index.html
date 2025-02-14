@@ -9,8 +9,12 @@
 <body>
     <div class="container">
         <h2>Compound Interest Calculator</h2>
+        
         <label for="principal">Initial Investment Sum ($):</label>
         <input type="text" id="principal" placeholder="Enter amount" required oninput="formatInput(this)">
+
+        <label for="contribution">Monthly contribution ($):</label>
+        <input type="text" id="contribution" placeholder="Enter amount" required oninput="formatInput(this)">
 
         <label for="rate">Annual interest rate (%):</label>
         <input type="text" id="rate" placeholder="Enter rate" required>
