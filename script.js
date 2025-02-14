@@ -1,13 +1,14 @@
 function calculateInterest() {
     let principalRaw = document.getElementById("principal").value.replace(/[^0-9.]/g, '');
     let contributionRaw = document.getElementById("contribution").value.replace(/[^0-9.]/g, '');
-    let rate = parseFloat(document.getElementById("rate").value);
+    let rateRaw = document.getElementById("rate").value.replace(/[^0-9.]/g, '');
     let years = parseFloat(document.getElementById("years").value);
     let compounds = parseInt(document.getElementById("compounds").value);
     let contributionFrequency = parseInt(document.getElementById("contributionFrequency").value);
 
     let principal = parseFloat(principalRaw) || 0;
     let contribution = parseFloat(contributionRaw) || 0;
+    let rate = parseFloat(rateRaw) || 0;
 
     if (isNaN(principal) || isNaN(contribution) || isNaN(rate) || isNaN(years)) {
         alert("Please enter valid numbers.");
@@ -35,13 +36,13 @@ function calculateInterest() {
 
     document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
 
-    document.getElementById("resultsContainer").style.display = "block"; // Show results section
+    document.getElementById("resultsContainer").style.display = "block";
     drawChart(yearsArray, values);
 }
 
 function drawChart(labels, data) {
     let chartContainer = document.querySelector(".chart-container");
-    chartContainer.style.display = "block"; // Show graph container
+    chartContainer.style.display = "block";
 
     let ctx = document.getElementById("investmentChart").getContext("2d");
 
@@ -72,4 +73,16 @@ function drawChart(labels, data) {
             }
         }
     });
+}
+
+// Format input field with $ sign while typing
+function formatCurrency(input) {
+    let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters
+    input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
+}
+
+// Format input field with % sign while typing
+function formatPercentage(input) {
+    let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters
+    input.value = value ? value + "%" : "0%";
 }
