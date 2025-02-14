@@ -17,11 +17,8 @@ function calculateInterest() {
     let r = rate;
 
     let finalAmount = principal * Math.pow((1 + r / n), (n * t));
-
-    for (let i = 1; i <= t * f; i++) {
-        let yearsRemaining = (t * f - i) / f;
-        finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
-    }
+    let resultsTable = document.querySelector("#resultsTable tbody");
+    resultsTable.innerHTML = ""; // Clear previous data
 
     let investmentValues = [];
     let depositValues = [];
@@ -37,17 +34,22 @@ function calculateInterest() {
         }
 
         totalDeposits = principal + contribution * f * i;
-
         investmentValues.push(tempAmount);
         depositValues.push(totalDeposits);
         yearsArray.push(i.toString());
+
+        let gainPercentage = ((tempAmount - totalDeposits) / totalDeposits) * 100;
+        resultsTable.innerHTML += `<tr>
+            <td>Year ${i}</td>
+            <td>$${tempAmount.toFixed(2)}</td>
+            <td>$${totalDeposits.toFixed(2)}</td>
+            <td>${gainPercentage.toFixed(2)}%</td>
+        </tr>`;
     }
 
-    let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-    document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
-
+    document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${finalAmount.toFixed(2)}.`;
     document.getElementById("resultsContainer").style.display = "block";
+
     drawChart(yearsArray, investmentValues, depositValues);
 }
 
@@ -71,6 +73,16 @@ function drawChart(labels, investmentData, depositData) {
                     borderWidth: 2,
                     pointRadius: 4,
                     pointHoverRadius: 6
+                },
+                {
+                    label: 'Total Deposits ($)',
+                    data: depositData,
+                    borderColor: '#f4a261',
+                    backgroundColor: 'rgba(244, 162, 97, 0.2)',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    borderDash: [5, 5]
                 }
             ]
         },
@@ -79,7 +91,7 @@ function drawChart(labels, investmentData, depositData) {
                 tooltip: {
                     mode: 'index',
                     intersect: false,
-                    padding: 10, // Adds more space inside the tooltip
+                    padding: 12, // Adds extra padding
                     callbacks: {
                         title: (tooltipItems) => `Year ${tooltipItems[0].label}`,
                         label: (tooltipItem) => {
@@ -94,7 +106,23 @@ function drawChart(labels, investmentData, depositData) {
                         }
                     }
                 }
+            },
+            scales: {
+                x: { title: { display: true, text: 'Years' } },
+                y: { title: { display: true, text: 'Investment Value ($)' } }
             }
         }
     });
+}
+
+// ✅ Format input field with $ sign while typing
+function formatCurrency(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
+}
+
+// ✅ Format input field with % sign while typing
+function formatPercentage(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? value + "%" : "0%";
 }
