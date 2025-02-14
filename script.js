@@ -121,12 +121,9 @@ function drawChart(labels, investmentData, depositData) {
               }
               let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
               let deposits = depositData[tooltipItem.dataIndex];
-              let gain = investment - deposits;
-              let percentageGain = deposits > 0 ? (gain / deposits) * 100 : 0;
               return [
                 `Investment total: $${investment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-                `Deposit total: $${deposits.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-                `Percentage gain: ${percentageGain.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`
+                `Deposit total: $${deposits.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
               ];
             }
           }
