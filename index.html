@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compound Interest Calculator</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
     <div class="container">
@@ -42,9 +42,15 @@
         </select>
 
         <button onclick="calculateInterest()">Calculate</button>
-        <p id="result"></p>
+    </div>
 
-        <!-- Graph inside a properly sized container -->
+    <!-- Spacer Component -->
+    <div class="spacer"></div>
+
+    <!-- Results Section -->
+    <div class="results-container" id="resultsContainer" style="display: none;">
+        <h3>Results</h3>
+        <p id="result"></p>
         <div class="chart-container">
             <canvas id="investmentChart"></canvas>
         </div>
