@@ -17,28 +17,65 @@ function calculateInterest() {
     let compoundRate = rate / 100 / compounds;
     let totalPeriods = years * compounds;
     let amount = principal * Math.pow((1 + compoundRate), totalPeriods);
-
-    // Convert contribution frequency to match compounding periods
+    
     let adjustedContributions = contribution * (compounds / contributionFrequency);
 
-    // Add contributions over time
+    let values = [];
+    let yearsArray = [];
+
     for (let i = 1; i <= totalPeriods; i++) {
         amount += adjustedContributions * Math.pow((1 + compoundRate), (totalPeriods - i));
+        if (i % compounds === 0) {
+            values.push(amount);
+            yearsArray.push(i / compounds);
+        }
     }
 
-    // Format final amount with commas
     let formattedAmount = amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    // Updated result message format
     document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
+
+    drawChart(yearsArray, values);
 }
 
-// Format input field with $ sign while typing
-function formatCurrency(input) {
-    let value = input.value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters
-    if (!isNaN(value) && value !== "") {
-        input.value = "$" + parseFloat(value).toLocaleString();
-    } else {
-        input.value = "$0"; // Default to $0 if empty
+function drawChart(labels, data) {
+    let ctx = document.getElementById("investmentChart").getContext("2d");
+    document.getElementById("investmentChart").style.display = "block";
+
+    if (window.myChart) {
+        window.myChart.destroy();
     }
+
+    window.myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Investment Value ($)',
+                data: data,
+                borderColor: '#5ba897',
+                backgroundColor: 'rgba(91, 168, 151, 0.2)',
+                borderWidth: 2,
+                pointRadius: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { title: { display: true, text: 'Years' } },
+                y: { title: { display: true, text: 'Investment Value ($)' } }
+            }
+        }
+    });
+}
+
+function formatCurrency(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
+}
+
+function formatPercentage(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? value + "%" : "0%";
 }
