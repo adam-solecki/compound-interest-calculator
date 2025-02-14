@@ -8,28 +8,42 @@ function calculateInterest() {
 
     let principal = parseFloat(principalRaw) || 0;
     let contribution = parseFloat(contributionRaw) || 0;
-    let rate = parseFloat(rateRaw) || 0;
+    let rate = parseFloat(rateRaw) / 100 || 0; // Convert percentage to decimal
 
     if (isNaN(principal) || isNaN(contribution) || isNaN(rate) || isNaN(years)) {
         alert("Please enter valid numbers.");
         return;
     }
 
-    let compoundRate = rate / 100 / compounds;
-    let totalPeriods = years * compounds;
-    let amount = principal * Math.pow((1 + compoundRate), totalPeriods);
-    
-    let adjustedContributions = contribution * (compounds / contributionFrequency);
+    let n = compounds; // Compounding periods per year
+    let t = years;
+    let r = rate;
 
+    // Corrected Compound Interest Formula
+    let amount = principal * Math.pow((1 + r / n), (n * t));
+
+    if (r > 0) {
+        amount += contribution * ((Math.pow(1 + (r / n), n * t) - 1) / (r / n));
+    } else {
+        // If interest rate is 0, simply add all contributions
+        amount += contribution * contributionFrequency * t;
+    }
+
+    // Create data points for the graph
     let values = [];
     let yearsArray = [];
 
-    for (let i = 1; i <= totalPeriods; i++) {
-        amount += adjustedContributions * Math.pow((1 + compoundRate), (totalPeriods - i));
-        if (i % compounds === 0) {
-            values.push(amount);
-            yearsArray.push(i / compounds);
+    for (let i = 0; i <= t; i++) {
+        let tempAmount = principal * Math.pow((1 + r / n), (n * i));
+
+        if (r > 0) {
+            tempAmount += contribution * ((Math.pow(1 + (r / n), n * i) - 1) / (r / n));
+        } else {
+            tempAmount += contribution * contributionFrequency * i;
         }
+
+        values.push(tempAmount);
+        yearsArray.push(i);
     }
 
     let formattedAmount = amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -67,6 +81,22 @@ function drawChart(labels, data) {
             responsive: true,
             maintainAspectRatio: false,
             aspectRatio: 2.5,
+            scales: {
+                x: { title: { display: true, text: 'Years' } },
+                y: { title: { display: true, text: 'Investment Value ($)' } }
+            }
         }
     });
+}
+
+// Format input field with $ sign while typing
+function formatCurrency(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
+}
+
+// Format input field with % sign while typing
+function formatPercentage(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? value + "%" : "0%";
 }
