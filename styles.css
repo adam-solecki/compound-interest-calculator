@@ -3,10 +3,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f4f4f4; /* Matches outer background */
+    background-color: #f4f4f4;
     color: #141414;
     margin: 0;
-    padding: 10px;
+    padding: 30px 10px; /* Increased top and bottom padding */
 }
 
 .container {
@@ -16,11 +16,11 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    max-width: 450px;
+    max-width: 500px; /* Increased width */
 }
 
 h2 {
-    font-size: 1.8em;
+    font-size: 2em; /* Increased size */
     margin-bottom: 5px;
 }
 
@@ -75,28 +75,30 @@ button:hover {
     background: #4e8f7c;
 }
 
-/* Removed dark grey spacer */
-.spacer {
-    height: 30px;
-    background: transparent; /* No color, blends with background */
-}
-
 /* Results Section */
 .results-container {
     background: white;
-    padding: 40px;
+    padding: 50px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: left; /* Left-align text */
     width: 100%;
-    max-width: 450px;
-    margin-top: 20px;
+    max-width: 500px; /* Match calculator width */
+    margin-top: 30px;
 }
 
+.results-container h3 {
+    font-size: 2em; /* Match size of calculator title */
+    margin-bottom: 15px;
+    color: #141414;
+    text-align: left;
+}
+
+/* Larger Graph */
 .chart-container {
     margin-top: 20px;
     width: 100%;
-    max-width: 400px;
-    height: 250px;
+    max-width: 500px; /* Match container */
+    height: 350px; /* Increase height for better visibility */
     display: none;
 }
