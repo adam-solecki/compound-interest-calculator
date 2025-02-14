@@ -7,6 +7,7 @@ body {
     background-color: #f4f4f4;
     color: #141414;
     margin: 0;
+    padding: 10px; /* Added padding for better mobile spacing */
 }
 
 .container {
@@ -15,7 +16,8 @@ body {
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 380px; /* Slightly wider for better spacing */
+    width: 100%;
+    max-width: 400px; /* Limits max width on larger screens */
 }
 
 h2 {
@@ -32,16 +34,17 @@ label {
     text-align: left;
     display: block;
     font-weight: bold;
-    margin-top: 15px; /* Increased spacing between labels */
+    margin-top: 15px;
 }
 
 input, select, button {
-    margin: 10px 0; /* Increased spacing between input fields */
-    padding: 10px;
-    width: 95%;
+    margin: 10px 0;
+    padding: 12px;
+    width: 100%; /* Full width for better mobile experience */
     font-family: Calibri, sans-serif;
     color: #141414;
     box-sizing: border-box;
+    font-size: 1em; /* Larger text for mobile readability */
 }
 
 input {
@@ -69,9 +72,22 @@ button {
     font-weight: bold;
     transition: background 0.3s;
     border-radius: 5px;
-    margin-top: 15px; /* More space above button */
+    margin-top: 15px;
+    font-size: 1em;
 }
 
 button:hover {
     background: #4e8f7c;
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px; /* Reduce padding on smaller screens */
+        width: 90%; /* Make sure it fits small screens */
+    }
+
+    input, select, button {
+        font-size: 1em; /* Make text slightly bigger for touch screens */
+    }
 }
