@@ -28,7 +28,8 @@
     </select>
 
     <label for="rate">Annual interest rate (%):</label>
-    <input type="text" id="rate" placeholder="0%" required oninput="formatPercentage(this)">
+    <!-- Use onfocus to remove the % for editing and onblur to reapply formatting -->
+    <input type="text" id="rate" placeholder="0%" required onfocus="removePercentage(this)" onblur="formatPercentage(this)">
 
     <label for="years">Number of years:</label>
     <input type="text" id="years" placeholder="Enter years" required>
