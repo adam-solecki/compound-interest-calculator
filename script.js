@@ -48,7 +48,7 @@ function calculateInterest() {
 
         investmentValues.push(tempAmount);
         depositValues.push(totalDeposits);
-        yearsArray.push(`Year ${i}`); // Formatting X-axis labels
+        yearsArray.push(i.toString()); // Remove "Year" from the tick marks
     }
 
     let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -80,7 +80,9 @@ function drawChart(labels, investmentData, depositData) {
                     borderColor: '#5ba897',
                     backgroundColor: 'rgba(91, 168, 151, 0.2)',
                     borderWidth: 2,
-                    pointRadius: 3
+                    pointRadius: 4, // Bigger point for better visibility
+                    pointHoverRadius: 6, // Make it pop when hovered
+                    tension: 0.3 // Smooth line curve
                 },
                 {
                     label: 'Total Deposits ($)',
@@ -88,7 +90,8 @@ function drawChart(labels, investmentData, depositData) {
                     borderColor: '#f4a261',
                     backgroundColor: 'rgba(244, 162, 97, 0.2)',
                     borderWidth: 2,
-                    pointRadius: 3,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
                     borderDash: [5, 5] // Dashed line to differentiate
                 }
             ]
@@ -99,9 +102,11 @@ function drawChart(labels, investmentData, depositData) {
             aspectRatio: 2.5,
             plugins: {
                 tooltip: {
+                    mode: 'index', // Combine tooltips
+                    intersect: false, // Show both lines' values at the same time
                     callbacks: {
                         title: function (tooltipItems) {
-                            return `Year ${tooltipItems[0].label}`;
+                            return `Year ${tooltipItems[0].label}`; // Fix "Year Year X" issue
                         },
                         label: function (tooltipItem) {
                             let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
