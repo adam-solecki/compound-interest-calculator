@@ -16,11 +16,11 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    max-width: 500px; /* Increased width */
+    max-width: 500px;
 }
 
 h2 {
-    font-size: 2em; /* Increased size */
+    font-size: 2em;
     margin-bottom: 5px;
 }
 
@@ -78,27 +78,36 @@ button:hover {
 /* Results Section */
 .results-container {
     background: white;
-    padding: 50px;
+    padding: 30px 50px 50px; /* Reduced top padding */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Left-align text */
+    text-align: left;
     width: 100%;
-    max-width: 500px; /* Match calculator width */
-    margin-top: 30px;
+    max-width: 500px;
+    margin-top: 20px;
 }
 
 .results-container h3 {
-    font-size: 2em; /* Match size of calculator title */
-    margin-bottom: 15px;
+    font-size: 2em;
+    margin-bottom: 10px; /* Reduced spacing under title */
     color: #141414;
     text-align: left;
 }
 
-/* Larger Graph */
+/* Graph Section */
 .chart-container {
     margin-top: 20px;
     width: 100%;
-    max-width: 500px; /* Match container */
+    max-width: 500px;
     height: 350px; /* Increase height for better visibility */
     display: none;
+}
+
+/* Tooltip Customization */
+.chartjs-tooltip {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1em;
 }
