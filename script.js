@@ -76,7 +76,7 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total Investment Value ($)',
           data: investmentData,
-          borderColor: '#163028', // Updated to brand colour
+          borderColor: '#163028', // Brand colour for investment value
           backgroundColor: 'rgba(22,48,40,0.2)', // Semi-transparent version of #163028
           borderWidth: 2,
           pointRadius: 4,
@@ -86,7 +86,7 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total Deposits ($)',
           data: depositData,
-          borderColor: '#33636D', // Updated to brand colour
+          borderColor: '#33636D', // Brand colour for deposits
           backgroundColor: 'rgba(51,99,109,0.2)', // Semi-transparent version of #33636D
           borderWidth: 2,
           pointRadius: 4,
@@ -100,22 +100,22 @@ function drawChart(labels, investmentData, depositData) {
       maintainAspectRatio: false,
       aspectRatio: 2.5,
       plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          align: 'start'
+        },
         tooltip: {
           displayColors: false,
           mode: 'index',
           intersect: false,
-          bodyFont: {
-            size: 10
-          },
-          titleFont: {
-            size: 10
-          },
+          bodyFont: { size: 10 },
+          titleFont: { size: 10 },
           callbacks: {
             title: function (tooltipItems) {
               return `Year ${tooltipItems[0].label}`;
             },
             label: function (tooltipItem) {
-              // Only return tooltip content for the first dataset to avoid duplication
               if (tooltipItem.datasetIndex !== 0) {
                 return null;
               }
@@ -130,12 +130,8 @@ function drawChart(labels, investmentData, depositData) {
         }
       },
       scales: {
-        x: {
-          title: { display: true, text: 'Years' }
-        },
-        y: {
-          title: { display: true, text: 'Investment Value ($)' }
-        }
+        x: { title: { display: true, text: 'Years' } },
+        y: { title: { display: true, text: 'Investment Value ($)' } }
       }
     }
   });
