@@ -18,14 +18,14 @@ function calculateInterest() {
     let totalPeriods = years * compounds;
     let amount = principal;
     let depositSum = principal;
-    
+
     let values = [];
     let depositValues = [];
     let yearsArray = [];
 
     for (let i = 1; i <= totalPeriods; i++) {
-        depositSum += contribution * (compounds / contributionFrequency);
-        amount = depositSum * Math.pow((1 + compoundRate), (i / compounds));
+        depositSum += contribution * (compounds / contributionFrequency); // Sum up all contributions
+        amount = (amount + (contribution * (compounds / contributionFrequency))) * (1 + compoundRate); // Apply compound growth
 
         if (i % compounds === 0) {
             values.push(amount);
@@ -75,4 +75,14 @@ function drawChart(labels, investmentData, depositData) {
         },
         options: { responsive: true, maintainAspectRatio: false }
     });
+}
+
+function formatCurrency(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
+}
+
+function formatPercentage(input) {
+    let value = input.value.replace(/[^0-9.]/g, '');
+    input.value = value ? value + "%" : "0%";
 }
