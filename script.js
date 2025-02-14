@@ -16,20 +16,17 @@ function calculateInterest() {
 
     let compoundRate = rate / 100 / compounds;
     let totalPeriods = years * compounds;
-    let amount = principal;
-    let depositSum = principal;
+    let amount = principal * Math.pow((1 + compoundRate), totalPeriods);
+    
+    let adjustedContributions = contribution * (compounds / contributionFrequency);
 
     let values = [];
-    let depositValues = [];
     let yearsArray = [];
 
     for (let i = 1; i <= totalPeriods; i++) {
-        depositSum += contribution * (compounds / contributionFrequency); // Sum up all contributions
-        amount = (amount + (contribution * (compounds / contributionFrequency))) * (1 + compoundRate); // Apply compound growth
-
+        amount += adjustedContributions * Math.pow((1 + compoundRate), (totalPeriods - i));
         if (i % compounds === 0) {
             values.push(amount);
-            depositValues.push(depositSum);
             yearsArray.push(i / compounds);
         }
     }
@@ -37,43 +34,42 @@ function calculateInterest() {
     let formattedAmount = amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
-    document.getElementById("resultsContainer").style.display = "block";
 
-    drawChart(yearsArray, values, depositValues);
+    drawChart(yearsArray, values);
 }
 
-function drawChart(labels, investmentData, depositData) {
+function drawChart(labels, data) {
+    let chartContainer = document.querySelector(".chart-container");
+    chartContainer.style.display = "block"; // Show graph container
+
     let ctx = document.getElementById("investmentChart").getContext("2d");
-    document.querySelector(".chart-container").style.display = "block";
 
     if (window.myChart) {
-        window.myChart.destroy();
+        window.myChart.destroy(); // Destroy existing chart before creating a new one
     }
 
     window.myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
-            datasets: [
-                {
-                    label: 'Investment Growth ($)',
-                    data: investmentData,
-                    borderColor: '#8cb47c',
-                    backgroundColor: 'rgba(140, 180, 124, 0.2)',
-                    borderWidth: 2,
-                    pointRadius: 2
-                },
-                {
-                    label: 'Total Deposits ($)',
-                    data: depositData,
-                    borderColor: '#e6c634',
-                    backgroundColor: 'rgba(230, 198, 52, 0.2)',
-                    borderWidth: 2,
-                    pointRadius: 2
-                }
-            ]
+            datasets: [{
+                label: 'Investment Growth ($)',
+                data: data,
+                borderColor: '#5ba897',
+                backgroundColor: 'rgba(91, 168, 151, 0.2)',
+                borderWidth: 2,
+                pointRadius: 2
+            }]
         },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 2.5, // Makes it wider (horizontal)
+            scales: {
+                x: { title: { display: true, text: 'Years' } },
+                y: { title: { display: true, text: 'Investment Value ($)' } }
+            }
+        }
     });
 }
 
