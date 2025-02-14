@@ -15,25 +15,25 @@ function calculateInterest() {
         return;
     }
 
-    let n = compounds; // Compounding periods per year
-    let f = contributionFrequency; // Deposit frequency per year
+    let n = compounds; // Number of times interest compounds per year
+    let f = contributionFrequency; // Number of deposits per year
     let t = years;
     let r = rate;
 
-    // 1️⃣ Compound the Initial Deposit Over Time
+    // ✅ Correctly compound the initial deposit over time
     let initialAmount = principal * Math.pow((1 + r / n), (n * t));
 
-    // 2️⃣ Compound Regular Deposits Over Time
+    // ✅ Correctly compound regular deposits over time
     let contributionAmount = 0;
     if (r > 0) {
-        contributionAmount = contribution * ((Math.pow(1 + (r / n), n * t) - 1) / (r / n));
+        contributionAmount = contribution * ((Math.pow(1 + (r / n), n * t) - 1) / (r / n)) * (1 + (r / n));
     } else {
-        contributionAmount = contribution * f * t; // If interest rate is 0, simple addition
+        contributionAmount = contribution * f * t; // If rate = 0, simple addition
     }
 
     let finalAmount = initialAmount + contributionAmount;
 
-    // 3️⃣ Generate Data for the Graph
+    // ✅ Generate correct data for the graph
     let values = [];
     let yearsArray = [];
 
@@ -42,7 +42,7 @@ function calculateInterest() {
         let tempContribution = 0;
 
         if (r > 0) {
-            tempContribution = contribution * ((Math.pow(1 + (r / n), n * i) - 1) / (r / n));
+            tempContribution = contribution * ((Math.pow(1 + (r / n), n * i) - 1) / (r / n)) * (1 + (r / n));
         } else {
             tempContribution = contribution * f * i;
         }
@@ -94,13 +94,13 @@ function drawChart(labels, data) {
     });
 }
 
-// Format input field with $ sign while typing
+// ✅ Format input field with $ sign while typing
 function formatCurrency(input) {
     let value = input.value.replace(/[^0-9.]/g, '');
     input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
 }
 
-// Format input field with % sign while typing
+// ✅ Format input field with % sign while typing
 function formatPercentage(input) {
     let value = input.value.replace(/[^0-9.]/g, '');
     input.value = value ? value + "%" : "0%";
