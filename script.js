@@ -15,21 +15,21 @@ function calculateInterest() {
     return;
   }
 
-  let n = compounds; // Number of times interest compounds per year
-  let f = depositFrequency; // Number of deposits per year
+  let n = compounds; // compounding frequency per year
+  let f = depositFrequency; // deposits per year
   let t = years;
   let r = rate;
 
-  // Initial Deposit Compounding
+  // Calculate final amount for the initial deposit
   let finalAmount = principal * Math.pow((1 + r / n), (n * t));
 
-  // Regular Deposits Compounded Over Time
+  // Add compounded contributions
   for (let i = 1; i <= t * f; i++) {
     let yearsRemaining = (t * f - i) / f;
     finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
   }
 
-  // Data Arrays for Graph
+  // Prepare data arrays for the graph
   let investmentValues = [];
   let depositValues = [];
   let yearsArray = [];
@@ -43,7 +43,6 @@ function calculateInterest() {
       tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
 
-    // Track total deposited amount at this year
     totalDeposits = principal + contribution * f * i;
 
     investmentValues.push(tempAmount);
@@ -76,8 +75,8 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total Investment Value ($)',
           data: investmentData,
-          borderColor: '#163028', // Brand colour for investment value
-          backgroundColor: 'rgba(22,48,40,0.2)', // Semi-transparent version of #163028
+          borderColor: '#27372d', // Matches heading color
+          backgroundColor: 'rgba(39,55,45,0.2)', // Semi-transparent version of #27372d
           borderWidth: 2,
           pointRadius: 4,
           pointHoverRadius: 6,
@@ -86,8 +85,8 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total Deposits ($)',
           data: depositData,
-          borderColor: '#33636D', // Brand colour for deposits
-          backgroundColor: 'rgba(51,99,109,0.2)', // Semi-transparent version of #33636D
+          borderColor: '#68916a', // Matches button color
+          backgroundColor: 'rgba(104,145,106,0.2)', // Semi-transparent version of #68916a
           borderWidth: 2,
           pointRadius: 4,
           pointHoverRadius: 6,
