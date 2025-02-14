@@ -6,7 +6,7 @@ body {
     background-color: #f4f4f4;
     color: #141414;
     margin: 0;
-    padding: 30px 10px; /* Increased top and bottom padding */
+    padding: 30px 10px;
 }
 
 .container {
@@ -75,7 +75,6 @@ button:hover {
     background: #4e8f7c;
 }
 
-/* Results Section */
 .results-container {
     background: white;
     padding: 30px 50px 50px; /* Reduced top padding */
@@ -94,20 +93,10 @@ button:hover {
     text-align: left;
 }
 
-/* Graph Section */
 .chart-container {
     margin-top: 20px;
     width: 100%;
     max-width: 500px;
-    height: 350px; /* Increase height for better visibility */
+    height: 350px;
     display: none;
-}
-
-/* Tooltip Customization */
-.chartjs-tooltip {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 1em;
 }
