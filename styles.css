@@ -78,7 +78,8 @@ button:hover {
 /* Results Section */
 .results-container {
   background: white;
-  padding: 50px;
+  /* Reduced top padding from 50px to 20px while keeping side and bottom padding */
+  padding: 20px 50px 50px 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: left; /* Left-align text */
