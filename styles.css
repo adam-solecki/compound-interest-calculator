@@ -11,11 +11,17 @@ body {
 
 .container {
     background: white;
-    padding: 45px; /* Keeps spacious layout */
+    padding: 45px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 350px; /* Increased width slightly to fit new input */
+    width: 360px; /* Slightly wider for new dropdown */
+}
+
+h3 {
+    font-size: 1.1em;
+    color: #5ba897;
+    margin-bottom: 15px;
 }
 
 input, select, button {
@@ -32,6 +38,10 @@ input {
     border-radius: 5px;
     outline: none;
     text-align: right;
+}
+
+input::placeholder {
+    color: #a9a9a9; /* Faded placeholder */
 }
 
 input[type="text"]::-webkit-outer-spin-button,
