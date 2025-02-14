@@ -20,18 +20,20 @@ function calculateInterest() {
     let t = years;
     let r = rate;
 
-    // ✅ Correctly compound the initial deposit over time
+    // ✅ Initial Deposit Compounding
     let finalAmount = principal * Math.pow((1 + r / n), (n * t));
 
-    // ✅ Add each regular deposit at its deposit frequency and compound it
+    // ✅ Regular Deposits Compounded Over Time
     for (let i = 1; i <= t * f; i++) {
         let yearsRemaining = (t * f - i) / f;
         finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
 
-    // ✅ Generate correct data for the graph
-    let values = [];
+    // ✅ Data Arrays for Graph
+    let investmentValues = [];
+    let depositValues = [];
     let yearsArray = [];
+    let totalDeposits = principal;
 
     for (let i = 0; i <= t; i++) {
         let tempAmount = principal * Math.pow((1 + r / n), (n * i));
@@ -41,8 +43,12 @@ function calculateInterest() {
             tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
         }
 
-        values.push(tempAmount);
-        yearsArray.push(i);
+        // Track total deposited amount at this year
+        totalDeposits = principal + contribution * f * i;
+
+        investmentValues.push(tempAmount);
+        depositValues.push(totalDeposits);
+        yearsArray.push(`Year ${i}`); // Formatting X-axis labels
     }
 
     let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -50,10 +56,10 @@ function calculateInterest() {
     document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
 
     document.getElementById("resultsContainer").style.display = "block";
-    drawChart(yearsArray, values);
+    drawChart(yearsArray, investmentValues, depositValues);
 }
 
-function drawChart(labels, data) {
+function drawChart(labels, investmentData, depositData) {
     let chartContainer = document.querySelector(".chart-container");
     chartContainer.style.display = "block";
 
@@ -67,22 +73,56 @@ function drawChart(labels, data) {
         type: 'line',
         data: {
             labels: labels,
-            datasets: [{
-                label: 'Investment Growth ($)',
-                data: data,
-                borderColor: '#5ba897',
-                backgroundColor: 'rgba(91, 168, 151, 0.2)',
-                borderWidth: 2,
-                pointRadius: 2
-            }]
+            datasets: [
+                {
+                    label: 'Total Investment Value ($)',
+                    data: investmentData,
+                    borderColor: '#5ba897',
+                    backgroundColor: 'rgba(91, 168, 151, 0.2)',
+                    borderWidth: 2,
+                    pointRadius: 3
+                },
+                {
+                    label: 'Total Deposits ($)',
+                    data: depositData,
+                    borderColor: '#f4a261',
+                    backgroundColor: 'rgba(244, 162, 97, 0.2)',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    borderDash: [5, 5] // Dashed line to differentiate
+                }
+            ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             aspectRatio: 2.5,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function (tooltipItems) {
+                            return `Year ${tooltipItems[0].label}`;
+                        },
+                        label: function (tooltipItem) {
+                            let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
+                            let deposits = depositData[tooltipItem.dataIndex];
+                            let gains = investment - deposits;
+                            return [
+                                `Investment Value: $${investment.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
+                                `Total Deposits: $${deposits.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
+                                `Gains: $${gains.toLocaleString(undefined, { minimumFractionDigits: 2 })}`
+                            ];
+                        }
+                    }
+                }
+            },
             scales: {
-                x: { title: { display: true, text: 'Years' } },
-                y: { title: { display: true, text: 'Investment Value ($)' } }
+                x: {
+                    title: { display: true, text: 'Years' }
+                },
+                y: {
+                    title: { display: true, text: 'Investment Value ($)' }
+                }
             }
         }
     });
