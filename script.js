@@ -52,7 +52,6 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
   document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
 
   document.getElementById("resultsContainer").style.display = "block";
@@ -109,6 +108,10 @@ function drawChart(labels, investmentData, depositData) {
               return `Year ${tooltipItems[0].label}`;
             },
             label: function (tooltipItem) {
+              // Only return tooltip content for the first dataset to avoid duplication
+              if (tooltipItem.datasetIndex !== 0) {
+                return null;
+              }
               let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
               let deposits = depositData[tooltipItem.dataIndex];
               let gain = investment - deposits;
@@ -140,8 +143,13 @@ function formatCurrency(input) {
   input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
 }
 
-// Format input field with % sign while typing
+// Format input field with % sign on blur
 function formatPercentage(input) {
   let value = input.value.replace(/[^0-9.]/g, '');
   input.value = value ? value + "%" : "0%";
+}
+
+// Remove % sign on focus to allow easier editing/backspacing
+function removePercentage(input) {
+  input.value = input.value.replace(/[%]/g, '');
 }
