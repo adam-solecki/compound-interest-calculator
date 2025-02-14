@@ -11,11 +11,11 @@ body {
 
 .container {
     background: white;
-    padding: 45px; /* Tripled the padding for a more spacious layout */
+    padding: 45px; /* Keeps spacious layout */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 320px;
+    width: 350px; /* Increased width slightly to fit new input */
 }
 
 input, select, button {
