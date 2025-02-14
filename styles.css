@@ -21,7 +21,7 @@ body {
 }
 
 h2 {
-    font-size: 1.8em; /* Bigger Title */
+    font-size: 1.8em;
     margin-bottom: 5px;
 }
 
@@ -35,7 +35,7 @@ label {
     text-align: left;
     display: block;
     font-weight: bold;
-    font-size: 1.1em; /* Bigger Labels */
+    font-size: 1.1em;
     margin-top: 15px;
 }
 
@@ -43,7 +43,7 @@ input, select, button {
     margin: 10px 0;
     padding: 12px;
     width: 100%;
-    font-size: 1.1em; /* Bigger Inputs */
+    font-size: 1.1em;
     font-family: Calibri, sans-serif;
     color: #141414;
     box-sizing: border-box;
@@ -66,7 +66,7 @@ button {
     border: none;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.1em; /* Bigger Button */
+    font-size: 1.1em;
     transition: background 0.3s;
     border-radius: 5px;
     margin-top: 15px;
@@ -76,7 +76,11 @@ button:hover {
     background: #4e8f7c;
 }
 
-canvas {
+/* Resized Graph & Ensured Horizontal Alignment */
+.chart-container {
     margin-top: 30px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 400px; /* Matches calculator width */
+    height: 250px; /* Reduced height for a more horizontal appearance */
+    display: none; /* Hidden until calculation */
 }
