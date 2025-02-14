@@ -101,8 +101,15 @@ function drawChart(labels, investmentData, depositData) {
       aspectRatio: 2.5,
       plugins: {
         tooltip: {
+          displayColors: false,
           mode: 'index',
           intersect: false,
+          bodyFont: {
+            size: 10
+          },
+          titleFont: {
+            size: 10
+          },
           callbacks: {
             title: function (tooltipItems) {
               return `Year ${tooltipItems[0].label}`;
