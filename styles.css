@@ -241,7 +241,7 @@ button:hover {
   line-height: 1.6;
 }
 
-/* Make Results title same size as Calculator title */
+/* Make Results title same size as Calculator title, and update text */
 .results-container h3,
 .results-container h2 {
   font-size: 2em;
@@ -250,7 +250,7 @@ button:hover {
   text-align: left;
 }
 
-/* Chart container: reduce horizontal margins */
+/* Chart container: expand fully within the Results module */
 .chart-container {
   margin: 20px 10px 0;
   width: 100%;
