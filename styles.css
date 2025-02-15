@@ -55,7 +55,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 .label-container label {
   flex: 1;
@@ -105,13 +105,12 @@ label {
   text-align: left;
   display: block;
   font-size: 1.1em;
-  margin-top: 15px;
+  margin-bottom: 5px;
   color: #171d28;
 }
 
 /* Inputs, selects, and button styling */
 input, select, button {
-  margin: 10px 0;
   padding: 12px;
   width: 100%;
   font-size: 1.1em;
@@ -171,7 +170,7 @@ button:hover {
   outline: none;
   font-size: 1.1em;
   border-radius: 10px;
-  margin: 40px auto 0; /* Centered and spaced from the graph */
+  margin: 40px auto 0;
 }
 
 .accordion.active, .accordion:hover {
@@ -212,7 +211,6 @@ button:hover {
   margin-top: 30px;
 }
 
-/* Increase spacing in results text */
 .results-container #result {
   margin-bottom: 30px;
   line-height: 1.6;
@@ -246,7 +244,6 @@ button:hover {
   .chart-container {
     height: 250px;
   }
-  /* Ensure table is scrollable on mobile */
   .panel {
     overflow-x: auto;
   }
