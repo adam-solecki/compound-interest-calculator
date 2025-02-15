@@ -102,13 +102,15 @@ button:hover {
   background: #5c8262;
 }
 
-/* Accordion button styling with updated text and reduced width */
+/* Accordion button styling with updated text and increased size */
 .accordion {
   background-color: #68916a;
   color: white;
   cursor: pointer;
   padding: 12px;
-  width: 16.5%; /* Reduced by 50% (from 33% to 16.5%) */
+  width: auto;
+  min-width: 220px;
+  white-space: nowrap;
   border: none;
   text-align: left;
   outline: none;
@@ -176,4 +178,24 @@ button:hover {
   max-width: 700px;
   height: 350px;
   display: none;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .container, .results-container {
+    padding: 20px;
+    max-width: 90%;
+  }
+  input, select, button, .accordion {
+    font-size: 1em;
+    padding: 10px;
+  }
+  .chart-container {
+    height: 250px;
+  }
+  /* Adjust accordion width on mobile: let it be auto with a minimum width */
+  .accordion {
+    min-width: 200px;
+    width: auto;
+  }
 }
