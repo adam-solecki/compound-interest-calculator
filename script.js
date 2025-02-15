@@ -138,8 +138,14 @@ function drawChart(labels, investmentData, depositData) {
         }
       },
       scales: {
-        x: { title: { display: true, text: 'Years' } },
-        y: { title: { display: true, text: 'Investment value ($)' } }
+        x: { 
+          title: { display: true, text: 'Years' },
+          ticks: { padding: 10 }
+        },
+        y: { 
+          title: { display: false },
+          ticks: { padding: 10 }
+        }
       }
     }
   });
