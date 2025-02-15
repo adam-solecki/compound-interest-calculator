@@ -102,19 +102,19 @@ button:hover {
   background: #5c8262;
 }
 
-/* Accordion button styling (same as main button color) */
+/* Accordion button styling with updated text and width */
 .accordion {
   background-color: #68916a;
   color: white;
   cursor: pointer;
   padding: 12px;
-  width: 100%;
+  width: 33%;
   border: none;
   text-align: left;
   outline: none;
   font-size: 1.1em;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 40px; /* Increased spacing between graph and accordion */
 }
 
 .accordion.active, .accordion:hover {
