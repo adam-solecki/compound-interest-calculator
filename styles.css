@@ -241,7 +241,7 @@ button:hover {
   line-height: 1.6;
 }
 
-/* Make Results title same size as Calculator title, and update text */
+/* Make Results title same size as Calculator title */
 .results-container h3,
 .results-container h2 {
   font-size: 2em;
