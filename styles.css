@@ -94,6 +94,9 @@ h2 {
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   z-index: 10;
 }
+.tooltip-text ul {
+  padding-left: 5px; /* Slightly reduced indent for bullet points */
+}
 
 /* Show tooltip on hover */
 .help-icon:hover + .tooltip-text {
@@ -233,7 +236,7 @@ button:hover {
 
 /* Reset button styling */
 .reset-btn {
-  background-color: #ffd5d4;
+  background-color: #adc8ff;
   color: #171d28;
   border: none;
   cursor: pointer;
@@ -247,7 +250,7 @@ button:hover {
   min-width: 250px;
 }
 .reset-btn:hover {
-  background-color: #ffc2c0;
+  background-color: #9bb3e0;
 }
 
 /* Mobile adjustments */
