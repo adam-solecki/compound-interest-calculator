@@ -46,7 +46,7 @@ h2 {
 }
 .info ul {
   margin: 0;
-  padding-left: 10px;  /* Reduced bullet indent */
+  padding-left: 10px; /* Reduced bullet indent */
 }
 
 /* Label container for interest rate with help icon */
@@ -229,6 +229,25 @@ button:hover {
   max-width: 700px;
   height: 350px;
   display: none;
+}
+
+/* Reset button styling */
+.reset-btn {
+  background-color: #ffd5d4;
+  color: #171d28;
+  border: none;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1.1em;
+  transition: background 0.3s;
+  border-radius: 10px;
+  margin: 20px auto 0;
+  padding: 12px;
+  display: block;
+  width: auto;
+}
+.reset-btn:hover {
+  background-color: #ffc2c0;
 }
 
 /* Mobile adjustments */
