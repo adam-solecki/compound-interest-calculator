@@ -55,8 +55,12 @@
   <div class="results-container" id="resultsContainer" style="display: none;">
     <h3>Results</h3>
     <p id="result"></p>
-
-    <!-- Accordion for detailed growth table -->
+    
+    <div class="chart-container">
+      <canvas id="investmentChart"></canvas>
+    </div>
+    
+    <!-- Accordion button and panel moved beneath the graph -->
     <button class="accordion">Show investment growth details</button>
     <div class="panel">
       <table id="growthTable">
@@ -72,10 +76,6 @@
           <!-- Table rows will be populated by script.js -->
         </tbody>
       </table>
-    </div>
-
-    <div class="chart-container">
-      <canvas id="investmentChart"></canvas>
     </div>
   </div>
 
