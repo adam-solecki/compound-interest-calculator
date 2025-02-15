@@ -54,10 +54,12 @@ function calculateInterest() {
 
   for (let i = 0; i <= t; i++) {
     let tempAmount = principal * Math.pow((1 + r / n), (n * i));
+    
     for (let j = 1; j <= i * f; j++) {
       let yearsRemaining = (i * f - j) / f;
       tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
+
     totalDeposits = principal + contribution * f * i;
     investmentValues.push(tempAmount);
     depositValues.push(totalDeposits);
@@ -65,9 +67,9 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Display the result sentence on one line with increased font size via CSS
+  // Update result message: same font size for sentence and value; new line added for the extra sentence.
   document.getElementById("result").innerHTML = 
-    `In ${years} years, your investment will be worth: $${formattedAmount}. Let's see how your money works for you over time.`;
+    `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
   // Populate the growth table
   let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
@@ -89,6 +91,7 @@ function calculateInterest() {
 
 function drawChart(labels, investmentData, depositData) {
   let chartContainer = document.querySelector(".chart-container");
+  // Remove extra horizontal margins for the chart to expand fully within its container
   chartContainer.style.marginLeft = "0";
   chartContainer.style.marginRight = "0";
   chartContainer.style.display = "block";
@@ -161,7 +164,9 @@ function drawChart(labels, investmentData, depositData) {
           title: { display: false },
           ticks: { 
             padding: 10,
-            callback: function(value) { return '$' + value; }
+            callback: function(value) { 
+              return '$' + value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
           }
         }
       }
