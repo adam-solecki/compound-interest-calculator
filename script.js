@@ -77,7 +77,7 @@ function drawChart(labels, investmentData, depositData) {
       labels: labels,
       datasets: [
         {
-          label: 'Total Investment Value ($)',
+          label: 'Total investment value ($)',
           data: investmentData,
           borderColor: '#27372d', // Matches heading color
           backgroundColor: 'rgba(39,55,45,0.2)', // Semi-transparent version of #27372d
@@ -87,7 +87,7 @@ function drawChart(labels, investmentData, depositData) {
           tension: 0.3
         },
         {
-          label: 'Total Deposits ($)',
+          label: 'Total deposits ($)',
           data: depositData,
           borderColor: '#68916a', // Matches button color
           backgroundColor: 'rgba(104,145,106,0.2)', // Semi-transparent version of #68916a
@@ -134,7 +134,7 @@ function drawChart(labels, investmentData, depositData) {
       },
       scales: {
         x: { title: { display: true, text: 'Years' } },
-        y: { title: { display: true, text: 'Investment Value ($)' } }
+        y: { title: { display: true, text: 'Investment value ($)' } }
       }
     }
   });
