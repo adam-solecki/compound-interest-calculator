@@ -12,13 +12,13 @@
     <h2>Compound Interest Calculator</h2>
     <h3 class="subheading">Your investment strategy</h3>
 
-    <label for="principal">Initial deposit:</label>
+    <label for="principal">Starting Investment ($):</label>
     <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)">
 
-    <label for="contribution">Regular deposit:</label>
+    <label for="contribution">Regular Contribution ($):</label>
     <input type="text" id="contribution" placeholder="$0" required oninput="formatCurrency(this)">
 
-    <label for="contributionFrequency">Deposit frequency:</label>
+    <label for="contributionFrequency">How Often You Add Money:</label>
     <select id="contributionFrequency">
       <option value="1">Annually</option>
       <option value="12">Monthly</option>
@@ -27,14 +27,14 @@
       <option value="365">Daily</option>
     </select>
 
-    <label for="rate">Annual interest rate (%):</label>
+    <label for="rate">Expected Annual Interest Rate (%):</label>
     <!-- onfocus removes the % for easier editing; onblur reapplies formatting -->
     <input type="text" id="rate" placeholder="0%" required onfocus="removePercentage(this)" onblur="formatPercentage(this)">
 
-    <label for="years">Number of years:</label>
+    <label for="years">Investment Duration (Years):</label>
     <input type="text" id="years" placeholder="Enter years" required>
 
-    <label for="compounds">Compounding frequency:</label>
+    <label for="compounds">How Often Interest Compounds:</label>
     <select id="compounds">
       <option value="1">Annually</option>
       <option value="12">Monthly</option>
@@ -42,7 +42,7 @@
       <option value="365">Daily</option>
     </select>
 
-    <button onclick="calculateInterest()">Calculate</button>
+    <button onclick="calculateInterest()">Calculate My Future Wealth</button>
   </div>
 
   <div class="results-container" id="resultsContainer" style="display: none;">
