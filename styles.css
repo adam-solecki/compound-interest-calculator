@@ -55,7 +55,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px; /* Reduced margin for closer grouping */
+  margin-bottom: 5px;
 }
 .label-container label {
   flex: 1;
