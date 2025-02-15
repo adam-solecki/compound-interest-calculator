@@ -53,7 +53,6 @@ function calculateInterest() {
   // Calculate overall gain (not displayed now)
   let gain = finalAmount - totalDeposits;
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Removed the gain sentence from the result display
 
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: $${formattedAmount}`;
