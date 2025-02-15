@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compound Interest Calculator</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
   <div class="container">
     <h2>Compound Interest Calculator</h2>
-    
+
     <div class="info">
       <p>The compound interest calculator will help you understand:</p>
       <ul>
@@ -18,12 +18,12 @@
         <li>the difference between saving now and saving later</li>
       </ul>
     </div>
-    
+
     <label for="principal">Starting investment ($):</label>
-    <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)">
+    <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)" />
 
     <label for="contribution">Regular contribution ($):</label>
-    <input type="text" id="contribution" placeholder="$0" required oninput="formatCurrency(this)">
+    <input type="text" id="contribution" placeholder="$0" required oninput="formatCurrency(this)" />
 
     <label for="contributionFrequency">How often you add money:</label>
     <select id="contributionFrequency">
@@ -34,22 +34,25 @@
       <option value="365">daily</option>
     </select>
 
-    <label for="rate">Expected annual interest rate (%):</label>
-    <!-- onfocus removes the % for easier editing; onblur reapplies formatting -->
-    <input type="text" id="rate" placeholder="0%" required onfocus="removePercentage(this)" onblur="formatPercentage(this)">
-    
-    <!-- New Disclaimer Block -->
-    <div class="disclaimer">
-      <strong>Disclaimer:</strong><br>
-      We recommend using an interest rate that reflects your funds average annual returns. If unsure, consider the historical averages:<br><br>
-      3-5% for conservative investments<br>
-      6-8% for balanced funds<br>
-      8-12% for stock market investments (S&P 500, NZX 50)<br><br>
-      Past performance does not guarantee future returns. Always consult a financial advisor before making investment decisions.
+    <!-- Label container for interest rate with help icon tooltip -->
+    <div class="label-container">
+      <label for="rate">Expected annual interest rate (%):</label>
+      <span class="help-icon">?</span>
+      <div class="tooltip-text">
+        <strong>Disclaimer:</strong><br>
+        We recommend using an interest rate that reflects your funds average annual returns.
+        If unsure, consider the historical averages:<br><br>
+        3-5% for conservative investments<br>
+        6-8% for balanced funds<br>
+        8-12% for stock market investments (S&P 500, NZX 50)<br><br>
+        Past performance does not guarantee future returns. Always consult a financial advisor
+        before making investment decisions.
+      </div>
     </div>
+    <input type="text" id="rate" placeholder="0%" required onfocus="removePercentage(this)" onblur="formatPercentage(this)" />
 
     <label for="years">Investment duration (years):</label>
-    <input type="text" id="years" placeholder="enter years" required>
+    <input type="text" id="years" placeholder="enter years" required />
 
     <label for="compounds">How often interest compounds:</label>
     <select id="compounds">
@@ -65,7 +68,7 @@
   <div class="results-container" id="resultsContainer" style="display: none;">
     <h3>Results</h3>
     <p id="result"></p>
-    
+
     <div class="chart-container">
       <canvas id="investmentChart"></canvas>
     </div>
