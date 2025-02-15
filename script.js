@@ -20,10 +20,10 @@ function calculateInterest() {
   let t = years;
   let r = rate;
 
-  // Calculate final amount for the initial deposit
+  // Calculate final amount for the starting investment
   let finalAmount = principal * Math.pow((1 + r / n), (n * t));
 
-  // Add compounded contributions
+  // Add compounded contributions over time
   for (let i = 1; i <= t * f; i++) {
     let yearsRemaining = (t * f - i) / f;
     finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
@@ -50,8 +50,12 @@ function calculateInterest() {
     yearsArray.push(i.toString());
   }
 
+  // Calculate gain over total contributions
+  let gain = finalAmount - totalDeposits;
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  document.getElementById("result").innerText = `Total sum of investments after ${years} years is $${formattedAmount}.`;
+  let formattedGain = gain.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  document.getElementById("result").innerHTML = `In ${years} years, your investment will be worth: $${formattedAmount}<br>That’s a gain of $${formattedGain} over your total contributions!`;
 
   document.getElementById("resultsContainer").style.display = "block";
   drawChart(yearsArray, investmentValues, depositValues);
