@@ -119,7 +119,7 @@ function drawChart(labels, investmentData, depositData) {
       maintainAspectRatio: false,
       aspectRatio: 2.5,
       plugins: {
-        legend: { display: false }, // Legend removed
+        legend: { display: false },
         tooltip: {
           displayColors: false,
           mode: 'index',
