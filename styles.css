@@ -4,13 +4,13 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #f4f4f4;
-  color: #171d28; /* Default text color */
+  color: #171d28;
   margin: 0;
   padding: 30px 10px;
 }
 
 .container {
-  background: #ffffff; /* White background */
+  background: #ffffff;
   padding: 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -18,22 +18,22 @@ body {
   max-width: 700px;
 }
 
-/* Left align headings within the container */
-.container h2 {
+/* Ensure main title and info block are left aligned */
+.container h2,
+.info {
   text-align: left;
 }
 
-/* Heading for compound interest calculator */
+/* Main title now in title case and using the button color */
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
-  color: #68916a; /* Heading now uses the button color */
+  color: #68916a;
 }
 
 /* Info block styling with increased spacing below */
 .info {
-  text-align: left;
-  margin-bottom: 40px; /* Increased spacing for symmetry */
+  margin-bottom: 40px;
   padding: 10px;
 }
 .info p {
@@ -44,7 +44,7 @@ h2 {
   padding-left: 20px;
 }
 
-/* Labels: remove bolding and unnecessary capitalization */
+/* Labels styling */
 label {
   text-align: left;
   display: block;
@@ -63,39 +63,38 @@ input, select, button {
   box-sizing: border-box;
 }
 
-/* Inputs remain right aligned; selects are left aligned */
+/* Inputs are right aligned; selects are left aligned */
 input {
   border: 1px solid #ccc;
-  border-radius: 10px; /* Increased rounding */
+  border-radius: 10px;
   outline: none;
   text-align: right;
   color: #171d28;
 }
-
 select {
   border: 1px solid #ccc;
-  border-radius: 10px; /* Increased rounding */
+  border-radius: 10px;
   outline: none;
   text-align: left;
   text-align-last: left;
   color: #171d28;
 }
 
-/* Soften placeholder text */
+/* Lighter placeholder text */
 input::placeholder,
 select::placeholder {
-  color: #e0e0e0; /* Lighter placeholder text */
+  color: #e0e0e0;
 }
 
 button {
-  background: #68916a; /* New button color */
+  background: #68916a;
   color: white;
   border: none;
   cursor: pointer;
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 10px; /* Increased rounding */
+  border-radius: 10px;
   margin-top: 15px;
 }
 
@@ -104,7 +103,7 @@ button:hover {
 }
 
 .results-container {
-  background: #ffffff; /* White background */
+  background: #ffffff;
   padding: 20px 50px 50px 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -114,15 +113,16 @@ button:hover {
   margin-top: 30px;
 }
 
-/* Add more spacing between the result text and the graph */
+/* Increase spacing between result text lines and below */
 .results-container #result {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
 
 .results-container h3 {
   font-size: 2em;
   margin-bottom: 15px;
-  color: #27372d; /* New heading color for results */
+  color: #27372d;
   text-align: left;
 }
 
