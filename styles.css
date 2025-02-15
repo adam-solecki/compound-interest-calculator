@@ -38,6 +38,20 @@ h2 {
   color: #171d28;
 }
 
+/* Info block styling */
+.info {
+  text-align: left;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+.info p {
+  margin-bottom: 10px;
+}
+.info ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
 /* Labels: remove bolding and unnecessary capitalization */
 label {
   text-align: left;
