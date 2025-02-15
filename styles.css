@@ -102,13 +102,12 @@ button:hover {
   background: #5c8262;
 }
 
-/* Accordion button styling with updated text and centered */
+/* Accordion button styling (centered) */
 .accordion {
   background-color: #68916a;
   color: white;
   cursor: pointer;
   padding: 12px;
-  width: auto;
   min-width: 220px;
   white-space: nowrap;
   border: none;
@@ -127,7 +126,7 @@ button:hover {
   padding: 0 18px;
   display: none;
   background-color: #ffffff;
-  overflow: hidden;
+  overflow-x: auto;
   margin-top: 10px;
   border-radius: 8px;
 }
@@ -137,13 +136,11 @@ button:hover {
   border-collapse: collapse;
   margin-top: 15px;
 }
-
 #growthTable th, #growthTable td {
   border: 1px solid #ccc;
   padding: 8px;
   text-align: center;
 }
-
 #growthTable th {
   background-color: #f4f4f4;
 }
@@ -193,9 +190,11 @@ button:hover {
   .chart-container {
     height: 250px;
   }
-  /* Adjust accordion width on mobile: let it be auto with a minimum width */
-  .accordion {
-    min-width: 200px;
-    width: auto;
+  /* Ensure table is scrollable on mobile */
+  .panel {
+    overflow-x: auto;
+  }
+  #growthTable {
+    min-width: 600px;
   }
 }
