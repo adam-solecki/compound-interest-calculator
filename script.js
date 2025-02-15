@@ -164,6 +164,20 @@ function removePercentage(input) {
   input.value = input.value.replace(/[%]/g, '');
 }
 
+function resetCalculator() {
+  // Clear all input values
+  document.getElementById("principal").value = "";
+  document.getElementById("contribution").value = "";
+  document.getElementById("rate").value = "";
+  document.getElementById("years").value = "";
+  document.getElementById("contributionFrequency").selectedIndex = 0;
+  document.getElementById("compounds").selectedIndex = 0;
+  // Hide the results container
+  document.getElementById("resultsContainer").style.display = "none";
+  // Scroll back to the top
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 // Accordion functionality for the growth table
 document.addEventListener("DOMContentLoaded", function() {
   var acc = document.getElementsByClassName("accordion");
