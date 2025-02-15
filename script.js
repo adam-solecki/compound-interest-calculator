@@ -144,7 +144,10 @@ function drawChart(labels, investmentData, depositData) {
         },
         y: { 
           title: { display: false },
-          ticks: { padding: 10 }
+          ticks: { 
+            padding: 10,
+            callback: function(value) { return '$' + value; }
+          }
         }
       }
     }
