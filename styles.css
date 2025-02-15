@@ -34,6 +34,8 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 300px;
+  /* Increase width when side-by-side */
+  max-width: 48%;
 }
 
 /* Field wrapper for consistent spacing */
@@ -229,6 +231,7 @@ button:hover {
   text-align: left;
   flex: 1;
   min-width: 300px;
+  max-width: 48%;
   margin-top: 30px;
 }
 
@@ -237,6 +240,7 @@ button:hover {
   line-height: 1.6;
 }
 
+/* Make Results title same size as Calculator title */
 .results-container h3,
 .results-container h2 {
   font-size: 2em;
@@ -251,7 +255,9 @@ button:hover {
   min-width: 300px;
   max-width: 700px;
   height: 350px;
-  display: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Reset button styling - reverted to red */
