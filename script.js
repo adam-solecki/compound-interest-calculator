@@ -29,7 +29,7 @@ function calculateInterest() {
     finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
   }
 
-  // Prepare data arrays for the graph
+  // Prepare arrays for the graph and table
   let investmentValues = [];
   let depositValues = [];
   let yearsArray = [];
@@ -50,14 +50,29 @@ function calculateInterest() {
     yearsArray.push(i.toString());
   }
 
-  // Calculate gain over total contributions
+  // Calculate overall gain
   let gain = finalAmount - totalDeposits;
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   let formattedGain = gain.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  document.getElementById("result").innerHTML = `In ${years} years, your investment will be worth: $${formattedAmount}<br><br>That’s a gain of $${formattedGain} over your total contributions!`;
-  
-  // Display additional space below the result text
+  document.getElementById("result").innerHTML = 
+    `In ${years} years, your investment will be worth: $${formattedAmount}<br><br>` +
+    `That’s a gain of $${formattedGain} over your total contributions!`;
+
+  // Populate the growth table
+  let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
+  tableBody.innerHTML = "";
+  for (let i = 0; i < yearsArray.length; i++) {
+    let interestEarned = investmentValues[i] - depositValues[i];
+    let row = `<tr>
+      <td>${yearsArray[i]}</td>
+      <td>$${depositValues[i].toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+      <td>$${interestEarned.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+      <td>$${investmentValues[i].toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+    </tr>`;
+    tableBody.innerHTML += row;
+  }
+
   document.getElementById("resultsContainer").style.display = "block";
   drawChart(yearsArray, investmentValues, depositValues);
 }
@@ -120,9 +135,7 @@ function drawChart(labels, investmentData, depositData) {
               return `Year ${tooltipItems[0].label}`;
             },
             label: function (tooltipItem) {
-              if (tooltipItem.datasetIndex !== 0) {
-                return null;
-              }
+              if (tooltipItem.datasetIndex !== 0) return null;
               let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
               let deposits = depositData[tooltipItem.dataIndex];
               return [
@@ -154,3 +167,19 @@ function formatPercentage(input) {
 function removePercentage(input) {
   input.value = input.value.replace(/[%]/g, '');
 }
+
+// Accordion functionality for the growth table
+document.addEventListener("DOMContentLoaded", function() {
+  var acc = document.getElementsByClassName("accordion");
+  for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+});
