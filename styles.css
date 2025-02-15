@@ -102,13 +102,13 @@ button:hover {
   background: #5c8262;
 }
 
-/* Accordion button styling with updated text and width */
+/* Accordion button styling with updated text and reduced width */
 .accordion {
   background-color: #68916a;
   color: white;
   cursor: pointer;
   padding: 12px;
-  width: 33%;
+  width: 16.5%; /* Reduced by 50% (from 33% to 16.5%) */
   border: none;
   text-align: left;
   outline: none;
