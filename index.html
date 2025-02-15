@@ -55,6 +55,25 @@
   <div class="results-container" id="resultsContainer" style="display: none;">
     <h3>Results</h3>
     <p id="result"></p>
+
+    <!-- Accordion for detailed growth table -->
+    <button class="accordion">Show investment growth details</button>
+    <div class="panel">
+      <table id="growthTable">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Total Deposit</th>
+            <th>Interest Earned</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table rows will be populated by script.js -->
+        </tbody>
+      </table>
+    </div>
+
     <div class="chart-container">
       <canvas id="investmentChart"></canvas>
     </div>
