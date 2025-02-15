@@ -34,6 +34,7 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 300px;
+  /* Increase width when side-by-side */
   max-width: 55%;
 }
 
@@ -277,6 +278,12 @@ button:hover {
 }
 .reset-btn:hover {
   background-color: #ffc2c0;
+}
+
+/* Highlight style for the future worth */
+.highlight {
+  background-color: #ffd5d4;
+  padding: 2px 4px;
 }
 
 /* Mobile adjustments */
