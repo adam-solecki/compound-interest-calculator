@@ -1,5 +1,4 @@
 function calculateInterest() {
-  // Get input values and remove any non-numeric characters (except for period)
   let principalRaw = document.getElementById("principal").value.replace(/[^0-9.]/g, '');
   let contributionRaw = document.getElementById("contribution").value.replace(/[^0-9.]/g, '');
   let rateRaw = document.getElementById("rate").value.replace(/[^0-9.]/g, '');
@@ -55,10 +54,12 @@ function calculateInterest() {
 
   for (let i = 0; i <= t; i++) {
     let tempAmount = principal * Math.pow((1 + r / n), (n * i));
+    
     for (let j = 1; j <= i * f; j++) {
       let yearsRemaining = (i * f - j) / f;
       tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
+
     totalDeposits = principal + contribution * f * i;
     investmentValues.push(tempAmount);
     depositValues.push(totalDeposits);
@@ -66,9 +67,9 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Bold and increase text size for the total investment value
+  // Display result sentence without altering the font size
   document.getElementById("result").innerHTML = 
-    `In ${years} years, your investment will be worth: <strong style="font-size:1.3em;">$${formattedAmount}</strong>`;
+    `In ${years} years, your investment will be worth: $${formattedAmount}.<br>Let's see how your money works for you over time.`;
 
   // Populate the growth table
   let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
@@ -90,7 +91,7 @@ function calculateInterest() {
 
 function drawChart(labels, investmentData, depositData) {
   let chartContainer = document.querySelector(".chart-container");
-  // Remove extra horizontal margins for the chart to expand fully
+  // Reduce extra horizontal margins to allow full width
   chartContainer.style.marginLeft = "0";
   chartContainer.style.marginRight = "0";
   chartContainer.style.display = "block";
