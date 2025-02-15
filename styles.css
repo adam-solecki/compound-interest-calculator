@@ -233,7 +233,7 @@ button:hover {
   flex: 1;
   min-width: 300px;
   max-width: 55%;
-  margin-top: 30px;
+  margin-top: 15px; /* Reduced margin */
 }
 
 .results-container #result {
@@ -241,7 +241,7 @@ button:hover {
   line-height: 1.6;
 }
 
-/* Make Results title same size as Calculator title, and change text */
+/* Make Results title same size as Calculator title */
 .results-container h3,
 .results-container h2 {
   font-size: 2em;
