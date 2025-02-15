@@ -30,7 +30,7 @@ body {
 .container {
   background: #ffffff;
   padding: 50px;
-  border-radius: 8px;
+  border-radius: 12px; /* Increased rounding */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 300px;
@@ -204,7 +204,7 @@ button:hover {
   background-color: #ffffff;
   overflow-x: auto;
   margin-top: 10px;
-  border-radius: 8px;
+  border-radius: 12px; /* Increased rounding for panel */
 }
 
 #growthTable {
@@ -224,11 +224,11 @@ button:hover {
 .results-container {
   background: #ffffff;
   padding: 20px 50px 50px 50px;
-  border-radius: 8px;
+  border-radius: 12px; /* Increased rounding */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
-  width: 100%;
-  max-width: 700px;
+  flex: 1;
+  min-width: 300px;
   margin-top: 30px;
 }
 
@@ -237,7 +237,8 @@ button:hover {
   line-height: 1.6;
 }
 
-.results-container h3 {
+.results-container h3,
+.results-container h2 {
   font-size: 2em;
   margin-bottom: 15px;
   color: #27372d;
@@ -247,6 +248,7 @@ button:hover {
 .chart-container {
   margin-top: 20px;
   width: 100%;
+  min-width: 300px;
   max-width: 700px;
   height: 350px;
   display: none;
@@ -273,6 +275,10 @@ button:hover {
 
 /* Mobile adjustments */
 @media (max-width: 600px) {
+  .main-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
   .container, .results-container {
     padding: 20px;
     max-width: 90%;
