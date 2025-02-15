@@ -1,4 +1,5 @@
 function calculateInterest() {
+  // Get input values and remove any non-numeric characters (except for period)
   let principalRaw = document.getElementById("principal").value.replace(/[^0-9.]/g, '');
   let contributionRaw = document.getElementById("contribution").value.replace(/[^0-9.]/g, '');
   let rateRaw = document.getElementById("rate").value.replace(/[^0-9.]/g, '');
@@ -14,6 +15,23 @@ function calculateInterest() {
     alert("Please enter valid numbers.");
     return;
   }
+
+  // Dynamically generate the Results title
+  const resultTitles = [
+    "Well, would you look at that...",
+    "The numbers are in!",
+    "You're on the path to riches!",
+    "Your future self is thanking you!",
+    "Holy smokes!",
+    "Let your money do the work!",
+    "Small steps today, big results tomorrow",
+    "Here's how your wealth stacks up",
+    "Your investments are working hard",
+    "Your future is shaping up nicely",
+    "Patience pays off - here's the proof"
+  ];
+  const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
+  document.querySelector(".results h2").innerText = randomTitle;
 
   let n = compounds; // compounding frequency per year
   let f = depositFrequency; // deposits per year
@@ -37,22 +55,20 @@ function calculateInterest() {
 
   for (let i = 0; i <= t; i++) {
     let tempAmount = principal * Math.pow((1 + r / n), (n * i));
-    
     for (let j = 1; j <= i * f; j++) {
       let yearsRemaining = (i * f - j) / f;
       tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
-
     totalDeposits = principal + contribution * f * i;
-
     investmentValues.push(tempAmount);
     depositValues.push(totalDeposits);
     yearsArray.push(i.toString());
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // Bold and increase text size for the total investment value
   document.getElementById("result").innerHTML = 
-    `In ${years} years, your investment will be worth: $${formattedAmount}`;
+    `In ${years} years, your investment will be worth: <strong style="font-size:1.3em;">$${formattedAmount}</strong>`;
 
   // Populate the growth table
   let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
@@ -74,14 +90,15 @@ function calculateInterest() {
 
 function drawChart(labels, investmentData, depositData) {
   let chartContainer = document.querySelector(".chart-container");
+  // Remove extra horizontal margins for the chart to expand fully
+  chartContainer.style.marginLeft = "0";
+  chartContainer.style.marginRight = "0";
   chartContainer.style.display = "block";
 
   let ctx = document.getElementById("investmentChart").getContext("2d");
-
   if (window.myChart) {
     window.myChart.destroy();
   }
-
   window.myChart = new Chart(ctx, {
     type: 'line',
     data: {
