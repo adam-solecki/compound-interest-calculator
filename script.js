@@ -79,7 +79,7 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total investment value ($)',
           data: investmentData,
-          borderColor: '#27372d', // Matches heading color
+          borderColor: '#27372d', // Matches heading color in results
           backgroundColor: 'rgba(39,55,45,0.2)', // Semi-transparent version of #27372d
           borderWidth: 2,
           pointRadius: 4,
