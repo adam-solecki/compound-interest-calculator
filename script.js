@@ -50,14 +50,13 @@ function calculateInterest() {
     yearsArray.push(i.toString());
   }
 
-  // Calculate overall gain
+  // Calculate overall gain (not displayed)
   let gain = finalAmount - totalDeposits;
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  let formattedGain = gain.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // let formattedGain = gain.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   document.getElementById("result").innerHTML = 
-    `In ${years} years, your investment will be worth: $${formattedAmount}<br><br>` +
-    `That’s a gain of $${formattedGain} over your total contributions!`;
+    `In ${years} years, your investment will be worth: $${formattedAmount}`;
 
   // Populate the growth table
   let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
@@ -66,9 +65,9 @@ function calculateInterest() {
     let interestEarned = investmentValues[i] - depositValues[i];
     let row = `<tr>
       <td>${yearsArray[i]}</td>
-      <td>$${depositValues[i].toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-      <td>$${interestEarned.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
-      <td>$${investmentValues[i].toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
+      <td>$${depositValues[i].toLocaleString(undefined, { minimumFractionDigits:2, maximumFractionDigits:2 })}</td>
+      <td>$${interestEarned.toLocaleString(undefined, { minimumFractionDigits:2, maximumFractionDigits:2 })}</td>
+      <td>$${investmentValues[i].toLocaleString(undefined, { minimumFractionDigits:2, maximumFractionDigits:2 })}</td>
     </tr>`;
     tableBody.innerHTML += row;
   }
