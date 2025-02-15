@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Calibri, sans-serif;
+    }
+    #chartContainer {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      height: 400px;
+      background: #ffffff;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    #chartCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    #beginBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffd5d4;
+      color: #171d28;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 1.1em;
+      cursor: pointer;
+      display: none; /* Initially hidden */
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+    }
+    #beginBtn:hover {
+      background: #ffc2c0;
+    }
+  </style>
+</head>
+<body>
+  <div id="chartContainer">
+    <canvas id="chartCanvas"></canvas>
+    <button id="beginBtn" onclick="location.href='index.html'">Let's begin</button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('chartCanvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('chartContainer');
+    const beginBtn = document.getElementById('beginBtn');
+
+    // Resize canvas to container size
+    function resizeCanvas() {
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Animation parameters
+    const totalDuration = 3000; // milliseconds for full drawing
+    const startTime = performance.now();
+    const amplitude = canvas.height / 4;  // amplitude of sine wave
+    const frequency = (6 * Math.PI) / canvas.width; // 3 complete cycles across the canvas
+    // We want the vertical shift to go from 0 to canvas.height/2 (so final y = (canvas.height/2) + amplitude*sin(6π) - canvas.height/2 = 0)
+    function verticalShift(x) {
+      return (x / canvas.width) * (canvas.height / 2);
+    }
+
+    function animateLine(timestamp) {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / totalDuration, 1);
+      const currentX = progress * canvas.width;
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw thick line (stroke width 5px)
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "#27372d";
+
+      // Start at left edge
+      ctx.moveTo(0, canvas.height / 2);
+
+      // Draw the line from x=0 to currentX
+      for (let x = 0; x <= currentX; x += 2) {
+        const shift = verticalShift(x);
+        const y = canvas.height / 2 + amplitude * Math.sin(frequency * x) - shift;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Continue animation until full width is drawn
+      if (progress < 1) {
+        requestAnimationFrame(animateLine);
+      } else {
+        // When finished, display the "Let's begin" button in the top right corner
+        beginBtn.style.display = "block";
+      }
+    }
+
+    requestAnimationFrame(animateLine);
+  </script>
+</body>
+</html>
