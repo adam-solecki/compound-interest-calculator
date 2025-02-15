@@ -14,9 +14,14 @@ body {
   padding: 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
   width: 100%;
   max-width: 700px;
+}
+
+/* Left align headings within the container */
+.container h2,
+.container .subheading {
+  text-align: left;
 }
 
 /* Heading for compound interest calculator */
@@ -73,7 +78,7 @@ select {
 /* Soften placeholder text */
 input::placeholder,
 select::placeholder {
-  color: #d3d3d3;
+  color: #e0e0e0; /* Lighter placeholder text */
 }
 
 button {
@@ -101,6 +106,11 @@ button:hover {
   width: 100%;
   max-width: 700px;
   margin-top: 30px;
+}
+
+/* Add more spacing between the result text and the graph */
+.results-container #result {
+  margin-bottom: 20px;
 }
 
 .results-container h3 {
