@@ -46,7 +46,7 @@ h2 {
 }
 .info ul {
   margin: 0;
-  padding-left: 10px; /* Reduced bullet indent */
+  padding-left: 20px; /* Increased bullet indent */
 }
 
 /* Label container for interest rate with help icon */
