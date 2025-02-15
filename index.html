@@ -9,40 +9,40 @@
 </head>
 <body>
   <div class="container">
-    <h2>Compound Interest Calculator</h2>
+    <h2>Compound interest calculator</h2>
     <h3 class="subheading">Your investment strategy</h3>
 
-    <label for="principal">Starting Investment ($):</label>
+    <label for="principal">Starting investment ($):</label>
     <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)">
 
-    <label for="contribution">Regular Contribution ($):</label>
+    <label for="contribution">Regular contribution ($):</label>
     <input type="text" id="contribution" placeholder="$0" required oninput="formatCurrency(this)">
 
-    <label for="contributionFrequency">How Often You Add Money:</label>
+    <label for="contributionFrequency">How often you add money:</label>
     <select id="contributionFrequency">
-      <option value="1">Annually</option>
-      <option value="12">Monthly</option>
-      <option value="26">Fortnightly</option>
-      <option value="52">Weekly</option>
-      <option value="365">Daily</option>
+      <option value="1">annually</option>
+      <option value="12">monthly</option>
+      <option value="26">fortnightly</option>
+      <option value="52">weekly</option>
+      <option value="365">daily</option>
     </select>
 
-    <label for="rate">Expected Annual Interest Rate (%):</label>
+    <label for="rate">Expected annual interest rate (%):</label>
     <!-- onfocus removes the % for easier editing; onblur reapplies formatting -->
     <input type="text" id="rate" placeholder="0%" required onfocus="removePercentage(this)" onblur="formatPercentage(this)">
 
-    <label for="years">Investment Duration (Years):</label>
-    <input type="text" id="years" placeholder="Enter years" required>
+    <label for="years">Investment duration (years):</label>
+    <input type="text" id="years" placeholder="enter years" required>
 
-    <label for="compounds">How Often Interest Compounds:</label>
+    <label for="compounds">How often interest compounds:</label>
     <select id="compounds">
-      <option value="1">Annually</option>
-      <option value="12">Monthly</option>
-      <option value="52">Weekly</option>
-      <option value="365">Daily</option>
+      <option value="1">annually</option>
+      <option value="12">monthly</option>
+      <option value="52">weekly</option>
+      <option value="365">daily</option>
     </select>
 
-    <button onclick="calculateInterest()">Calculate My Future Wealth</button>
+    <button onclick="calculateInterest()">Calculate my future wealth</button>
   </div>
 
   <div class="results-container" id="resultsContainer" style="display: none;">
