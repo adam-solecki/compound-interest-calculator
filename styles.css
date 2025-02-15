@@ -18,20 +18,20 @@ body {
   max-width: 700px;
 }
 
-/* Ensure main title and info block are left aligned */
+/* Left align main title and info block */
 .container h2,
 .info {
   text-align: left;
 }
 
-/* Main title now in title case and using the button color */
+/* Main title in title case using the button color */
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
   color: #68916a;
 }
 
-/* Info block styling with increased spacing below */
+/* Info block styling with extra bottom margin */
 .info {
   margin-bottom: 40px;
   padding: 10px;
@@ -63,7 +63,7 @@ input, select, button {
   box-sizing: border-box;
 }
 
-/* Inputs are right aligned; selects are left aligned */
+/* Inputs right aligned; selects left aligned */
 input {
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -102,6 +102,50 @@ button:hover {
   background: #5c8262;
 }
 
+/* Accordion button styling (same as main button color) */
+.accordion {
+  background-color: #68916a;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.1em;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.accordion.active, .accordion:hover {
+  background-color: #5c8262;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: #ffffff;
+  overflow: hidden;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+#growthTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+#growthTable th, #growthTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+#growthTable th {
+  background-color: #f4f4f4;
+}
+
 .results-container {
   background: #ffffff;
   padding: 20px 50px 50px 50px;
@@ -113,7 +157,7 @@ button:hover {
   margin-top: 30px;
 }
 
-/* Increase spacing between result text lines and below */
+/* Increase spacing in results text */
 .results-container #result {
   margin-bottom: 30px;
   line-height: 1.6;
