@@ -24,14 +24,14 @@ body {
   text-align: left;
 }
 
-/* Main title in title case using the button color */
+/* Main title using the button color */
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
   color: #68916a;
 }
 
-/* Info block styling with extra bottom margin */
+/* Info block styling with extra spacing below */
 .info {
   margin-bottom: 40px;
   padding: 10px;
@@ -63,7 +63,7 @@ input, select, button {
   box-sizing: border-box;
 }
 
-/* Inputs right aligned; selects left aligned */
+/* Inputs are right aligned; selects are left aligned */
 input {
   border: 1px solid #ccc;
   border-radius: 10px;
