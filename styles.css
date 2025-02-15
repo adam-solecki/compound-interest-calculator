@@ -44,7 +44,55 @@ h2 {
   padding-left: 20px;
 }
 
-/* Disclaimer styling added earlier remains if applicable */
+/* Label container for interest rate with help icon */
+.label-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.label-container label {
+  flex: 1;
+  margin: 0;
+  padding-right: 10px;
+}
+
+/* Help icon styling */
+.help-icon {
+  display: inline-block;
+  background: #68916a;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Tooltip text styling */
+.tooltip-text {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 280px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #171d28;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+/* Show tooltip on hover */
+.help-icon:hover + .tooltip-text {
+  display: block;
+}
 
 /* Labels styling */
 label {
@@ -185,7 +233,7 @@ button:hover {
     padding: 20px;
     max-width: 90%;
   }
-  input, select, button, .accordion {
+  input, select, button, .accordion, .help-icon {
     font-size: 1em;
     padding: 10px;
   }
