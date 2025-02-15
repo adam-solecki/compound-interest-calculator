@@ -19,7 +19,7 @@ body {
   max-width: 700px;
 }
 
-/* Heading for Compound Interest Calculator */
+/* Heading for compound interest calculator */
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
@@ -33,15 +33,16 @@ h2 {
   color: #171d28;
 }
 
+/* Labels: remove bolding and unnecessary capitalization */
 label {
   text-align: left;
   display: block;
-  font-weight: bold;
   font-size: 1.1em;
   margin-top: 15px;
   color: #171d28;
 }
 
+/* Inputs, selects, and button styling */
 input, select, button {
   margin: 10px 0;
   padding: 12px;
@@ -51,7 +52,7 @@ input, select, button {
   box-sizing: border-box;
 }
 
-/* Keep inputs right aligned, but ensure selects are left aligned */
+/* Inputs remain right aligned; selects are left aligned */
 input {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -69,9 +70,10 @@ select {
   color: #171d28;
 }
 
+/* Soften placeholder text */
 input::placeholder,
 select::placeholder {
-  color: #171d28;
+  color: #a8a8a8;
 }
 
 button {
@@ -79,7 +81,7 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
   border-radius: 5px;
@@ -104,7 +106,7 @@ button:hover {
 .results-container h3 {
   font-size: 2em;
   margin-bottom: 15px;
-  color: #27372d; /* New heading color for Results */
+  color: #27372d; /* New heading color for results */
   text-align: left;
 }
 
