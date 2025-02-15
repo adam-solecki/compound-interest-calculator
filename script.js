@@ -55,8 +55,9 @@ function calculateInterest() {
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   let formattedGain = gain.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  document.getElementById("result").innerHTML = `In ${years} years, your investment will be worth: $${formattedAmount}<br>That’s a gain of $${formattedGain} over your total contributions!`;
-
+  document.getElementById("result").innerHTML = `In ${years} years, your investment will be worth: $${formattedAmount}<br><br>That’s a gain of $${formattedGain} over your total contributions!`;
+  
+  // Display additional space below the result text
   document.getElementById("resultsContainer").style.display = "block";
   drawChart(yearsArray, investmentValues, depositValues);
 }
@@ -79,8 +80,8 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total investment value ($)',
           data: investmentData,
-          borderColor: '#27372d', // Matches heading color in results
-          backgroundColor: 'rgba(39,55,45,0.2)', // Semi-transparent version of #27372d
+          borderColor: '#27372d',
+          backgroundColor: 'rgba(39,55,45,0.2)',
           borderWidth: 2,
           pointRadius: 4,
           pointHoverRadius: 6,
@@ -89,8 +90,8 @@ function drawChart(labels, investmentData, depositData) {
         {
           label: 'Total deposits ($)',
           data: depositData,
-          borderColor: '#68916a', // Matches button color
-          backgroundColor: 'rgba(104,145,106,0.2)', // Semi-transparent version of #68916a
+          borderColor: '#68916a',
+          backgroundColor: 'rgba(104,145,106,0.2)',
           borderWidth: 2,
           pointRadius: 4,
           pointHoverRadius: 6,
@@ -140,19 +141,16 @@ function drawChart(labels, investmentData, depositData) {
   });
 }
 
-// Format input field with $ sign while typing
 function formatCurrency(input) {
   let value = input.value.replace(/[^0-9.]/g, '');
   input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
 }
 
-// Format input field with % sign on blur
 function formatPercentage(input) {
   let value = input.value.replace(/[^0-9.]/g, '');
   input.value = value ? value + "%" : "0%";
 }
 
-// Remove % sign on focus to allow easier editing/backspacing
 function removePercentage(input) {
   input.value = input.value.replace(/[%]/g, '');
 }
