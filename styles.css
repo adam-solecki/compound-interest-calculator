@@ -4,13 +4,13 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #f4f4f4;
-  color: #171d28; /* Default text color for all other components */
+  color: #171d28; /* Default text color for other components */
   margin: 0;
   padding: 30px 10px;
 }
 
 .container {
-  background: #d7dde2; /* Module background */
+  background: #ffffff; /* White background */
   padding: 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -30,7 +30,7 @@ h2 {
 .subheading {
   font-size: 1.2em;
   margin-bottom: 25px;
-  color: #171d28; /* Default text color */
+  color: #171d28;
 }
 
 label {
@@ -51,7 +51,8 @@ input, select, button {
   box-sizing: border-box;
 }
 
-input, select {
+/* Keep inputs right aligned, but override select to be left aligned */
+input {
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
@@ -59,7 +60,17 @@ input, select {
   color: #171d28;
 }
 
-input::placeholder {
+select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  text-align: left;
+  text-align-last: left;
+  color: #171d28;
+}
+
+input::placeholder,
+select::placeholder {
   color: #171d28;
 }
 
@@ -80,7 +91,7 @@ button:hover {
 }
 
 .results-container {
-  background: #d7dde2; /* Module background */
+  background: #ffffff; /* White background */
   padding: 20px 50px 50px 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
