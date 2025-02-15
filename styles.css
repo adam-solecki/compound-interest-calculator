@@ -9,13 +9,31 @@ body {
   padding: 30px 10px;
 }
 
+.main-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* When screen is small, stack vertically */
+@media (max-width: 900px) {
+  .main-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
 .container {
   background: #ffffff;
   padding: 50px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 700px;
+  flex: 1;
+  min-width: 300px;
 }
 
 /* Field wrapper for consistent spacing */
