@@ -223,6 +223,7 @@ button:hover {
   background-color: #f4f4f4;
 }
 
+/* Results module styling */
 .results-container {
   background: #ffffff;
   padding: 20px 50px 50px 50px;
@@ -240,7 +241,7 @@ button:hover {
   line-height: 1.6;
 }
 
-/* Make Results title same size as Calculator title */
+/* Make Results title same size as Calculator title, and change text */
 .results-container h3,
 .results-container h2 {
   font-size: 2em;
@@ -249,11 +250,12 @@ button:hover {
   text-align: left;
 }
 
+/* Chart container: reduce horizontal margins */
 .chart-container {
-  margin-top: 20px;
+  margin: 20px 10px 0;
   width: 100%;
   min-width: 300px;
-  max-width: 100%; /* Expand to full module width */
+  max-width: 100%;
   height: 350px;
   display: block;
 }
