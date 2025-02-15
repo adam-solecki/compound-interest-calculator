@@ -19,8 +19,7 @@ body {
 }
 
 /* Left align headings within the container */
-.container h2,
-.container .subheading {
+.container h2 {
   text-align: left;
 }
 
@@ -28,20 +27,13 @@ body {
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
-  color: #27372d; /* New heading color */
+  color: #68916a; /* Heading now uses the button color */
 }
 
-/* Subheading for investment strategy */
-.subheading {
-  font-size: 1.2em;
-  margin-bottom: 35px; /* Increased spacing */
-  color: #171d28;
-}
-
-/* Info block styling */
+/* Info block styling with increased spacing below */
 .info {
   text-align: left;
-  margin-bottom: 25px;
+  margin-bottom: 40px; /* Increased spacing for symmetry */
   padding: 10px;
 }
 .info p {
