@@ -18,6 +18,11 @@ body {
   max-width: 700px;
 }
 
+/* Field wrapper for consistent spacing */
+.field {
+  margin-bottom: 20px;
+}
+
 /* Left align main title and info block */
 .container h2,
 .info {
@@ -50,7 +55,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;  /* Increased spacing between variables */
+  margin-bottom: 20px;
 }
 .label-container label {
   flex: 1;
