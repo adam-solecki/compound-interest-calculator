@@ -83,16 +83,17 @@ h2 {
   padding-right: 10px;
 }
 
-/* Help icon styling */
+/* Help icon styling (reduced size) */
 .help-icon {
   display: inline-block;
   background: #68916a;
   color: #fff;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 20px; /* Reduced width */
+  height: 20px; /* Reduced height */
   text-align: center;
-  line-height: 24px;
+  line-height: 20px; /* Adjusted line height */
+  font-size: 0.9em; /* Reduced font size */
   font-weight: bold;
   cursor: pointer;
   position: relative;
@@ -237,6 +238,7 @@ button:hover {
 }
 
 .results-container #result {
+  margin-top: 20px; /* Increased spacing between title and result */
   margin-bottom: 30px;
   line-height: 1.6;
   font-size: 1.3em; /* Increased font size for result text */
