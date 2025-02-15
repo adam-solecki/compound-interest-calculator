@@ -15,7 +15,7 @@ body {
   justify-content: center;
   gap: 30px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -35,7 +35,7 @@ body {
   flex: 1;
   min-width: 300px;
   /* Increase width when side-by-side */
-  max-width: 48%;
+  max-width: 55%;
 }
 
 /* Field wrapper for consistent spacing */
@@ -231,7 +231,7 @@ button:hover {
   text-align: left;
   flex: 1;
   min-width: 300px;
-  max-width: 48%;
+  max-width: 55%;
   margin-top: 30px;
 }
 
@@ -253,11 +253,9 @@ button:hover {
   margin-top: 20px;
   width: 100%;
   min-width: 300px;
-  max-width: 700px;
+  max-width: 100%; /* Expand to full module width */
   height: 350px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Reset button styling - reverted to red */
