@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compound Interest Calculator</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
   <div class="main-wrapper">
@@ -64,6 +64,16 @@
         <input type="text" id="years" placeholder="enter years" required />
       </div>
 
+      <div class="field">
+        <label for="compounds">How often interest compounds:</label>
+        <select id="compounds">
+          <option value="1">annually</option>
+          <option value="12">monthly</option>
+          <option value="52">weekly</option>
+          <option value="365">daily</option>
+        </select>
+      </div>
+
       <button onclick="calculateInterest()">Calculate my future wealth</button>
     </div>
 
@@ -75,6 +85,7 @@
         <canvas id="investmentChart"></canvas>
       </div>
 
+      <!-- Accordion button placed beneath the graph -->
       <button class="accordion">Show breakdown table</button>
       <div class="panel">
         <table id="growthTable">
@@ -92,6 +103,7 @@
         </table>
       </div>
 
+      <!-- Reset button placed beneath the table -->
       <button class="reset-btn" onclick="resetCalculator()">Reset</button>
     </div>
   </div>
