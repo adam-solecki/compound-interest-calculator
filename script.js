@@ -65,7 +65,8 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Bold the future investment value and separate the second sentence onto a new line
+  // Bold the investment value, highlight it using the same color as the Reset button (#ffd5d4),
+  // and move the extra sentence to a new line with extra spacing.
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
