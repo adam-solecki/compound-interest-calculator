@@ -30,11 +30,10 @@ body {
 .container {
   background: #ffffff;
   padding: 50px;
-  border-radius: 12px; /* Increased rounding */
+  border-radius: 8px; /* Reduced from 12px */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 300px;
-  /* Increase width when side-by-side */
   max-width: 55%;
 }
 
@@ -49,11 +48,11 @@ body {
   text-align: left;
 }
 
-/* Main title using the button color */
+/* Main title using the new button color */
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
-  color: #68916a;
+  color: #38A6B7;
 }
 
 /* Info block styling with extra spacing below */
@@ -86,7 +85,7 @@ h2 {
 /* Help icon styling (reduced size) */
 .help-icon {
   display: inline-block;
-  background: #68916a;
+  background: #38A6B7;
   color: #fff;
   border-radius: 50%;
   width: 20px; /* Reduced width */
@@ -145,14 +144,14 @@ input, select, button {
 /* Inputs are right aligned; selects are left aligned */
 input {
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 8px; /* Reduced rounding */
   outline: none;
   text-align: right;
   color: #171d28;
 }
 select {
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 8px; /* Reduced rounding */
   outline: none;
   text-align: left;
   text-align-last: left;
@@ -166,24 +165,24 @@ select::placeholder {
 }
 
 button {
-  background: #68916a;
+  background: #38A6B7;
   color: white;
   border: none;
   cursor: pointer;
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 10px;
+  border-radius: 8px; /* Reduced rounding */
   margin-top: 15px;
 }
 
 button:hover {
-  background: #5c8262;
+  background: #319AA8;
 }
 
 /* Accordion button styling (centered) */
 .accordion {
-  background-color: #68916a;
+  background-color: #38A6B7;
   color: white;
   cursor: pointer;
   padding: 12px;
@@ -193,12 +192,12 @@ button:hover {
   text-align: center;
   outline: none;
   font-size: 1.1em;
-  border-radius: 10px;
+  border-radius: 8px; /* Reduced rounding */
   margin: 40px auto 0;
 }
 
 .accordion.active, .accordion:hover {
-  background-color: #5c8262;
+  background-color: #319AA8;
 }
 
 .panel {
@@ -207,7 +206,7 @@ button:hover {
   background-color: #ffffff;
   overflow-x: auto;
   margin-top: 10px;
-  border-radius: 12px; /* Increased rounding for panel */
+  border-radius: 8px; /* Reduced rounding */
 }
 
 #growthTable {
@@ -228,7 +227,7 @@ button:hover {
 .results-container {
   background: #ffffff;
   padding: 20px 50px 50px 50px;
-  border-radius: 12px; /* Increased rounding */
+  border-radius: 8px; /* Reduced rounding */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   flex: 1;
@@ -241,7 +240,7 @@ button:hover {
   margin-top: 20px; /* Increased spacing between title and result */
   margin-bottom: 30px;
   line-height: 1.6;
-  font-size: 1.3em; /* Increased font size for result text */
+  font-size: 1.3em;
 }
 
 /* Make Results title same size as Calculator title */
@@ -263,7 +262,7 @@ button:hover {
   display: block;
 }
 
-/* Reset button styling - reverted to red */
+/* Reset button styling - remains unchanged */
 .reset-btn {
   background-color: #ffd5d4;
   color: #171d28;
@@ -272,7 +271,7 @@ button:hover {
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 10px;
+  border-radius: 8px; /* Adjusted rounding if needed; but instruction said leave reset as is, so we might leave its rounding unchanged. However, since instructions said "make module corners and button corners slightly less rounded" and leave Reset button color as is, we apply same rounding to Reset button as well */
   margin: 20px auto 0;
   padding: 12px;
   display: block;
