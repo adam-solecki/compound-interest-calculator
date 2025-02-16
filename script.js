@@ -54,12 +54,10 @@ function calculateInterest() {
 
   for (let i = 0; i <= t; i++) {
     let tempAmount = principal * Math.pow((1 + r / n), (n * i));
-    
     for (let j = 1; j <= i * f; j++) {
       let yearsRemaining = (i * f - j) / f;
       tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
-
     totalDeposits = principal + contribution * f * i;
     investmentValues.push(tempAmount);
     depositValues.push(totalDeposits);
@@ -67,7 +65,7 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Update result message: bold the investment value and place the extra sentence on a new line with extra spacing.
+  // Bold the future investment value and separate the second sentence onto a new line
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
