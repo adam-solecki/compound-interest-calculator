@@ -1,9 +1,9 @@
 function calculateInterest() {
+  // Retrieve and sanitize input values
   let principalRaw = document.getElementById("principal").value.replace(/[^0-9.]/g, '');
   let contributionRaw = document.getElementById("contribution").value.replace(/[^0-9.]/g, '');
   let rateRaw = document.getElementById("rate").value.replace(/[^0-9.]/g, '');
   let years = parseFloat(document.getElementById("years").value);
-  let compounds = parseInt(document.getElementById("compounds").value);
   let depositFrequency = parseInt(document.getElementById("contributionFrequency").value);
 
   let principal = parseFloat(principalRaw) || 0;
@@ -15,25 +15,9 @@ function calculateInterest() {
     return;
   }
 
-  // Dynamically generate a random title for the Results module
-  const resultTitles = [
-    "Well, would you look at that...",
-    "The numbers are in!",
-    "You're on the path to riches!",
-    "Your future self is thanking you!",
-    "Holy smokes!",
-    "Let your money do the work!",
-    "Small steps today, big results tomorrow",
-    "Here's how your wealth stacks up",
-    "Your investments are working hard",
-    "Your future is shaping up nicely",
-    "Patience pays off - here's the proof"
-  ];
-  const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
-  document.querySelector(".results h2").innerText = randomTitle;
-
-  let n = compounds; // compounding frequency per year
-  let f = depositFrequency; // deposits per year
+  // Use default compounding frequency of annual (n = 1)
+  let n = 1;
+  let f = depositFrequency; // deposit frequency remains dynamic
   let t = years;
   let r = rate;
 
@@ -54,12 +38,10 @@ function calculateInterest() {
 
   for (let i = 0; i <= t; i++) {
     let tempAmount = principal * Math.pow((1 + r / n), (n * i));
-    
     for (let j = 1; j <= i * f; j++) {
       let yearsRemaining = (i * f - j) / f;
       tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
-
     totalDeposits = principal + contribution * f * i;
     investmentValues.push(tempAmount);
     depositValues.push(totalDeposits);
@@ -67,7 +49,25 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Update result message: bold the investment value and place the extra sentence on a new line with extra spacing.
+
+  // Dynamically generate a random title for the results module
+  const resultTitles = [
+    "Well, would you look at that...",
+    "The numbers are in!",
+    "You're on the path to riches!",
+    "Your future self is thanking you!",
+    "Holy smokes!",
+    "Let your money do the work!",
+    "Small steps today, big results tomorrow",
+    "Here's how your wealth stacks up",
+    "Your investments are working hard",
+    "Your future is shaping up nicely",
+    "Patience pays off - here's the proof"
+  ];
+  const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
+  document.querySelector(".results h2").innerText = randomTitle;
+
+  // Display result message with the future investment value highlighted and additional sentence on a new line
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
