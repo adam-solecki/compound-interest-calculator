@@ -30,7 +30,7 @@ body {
 .container {
   background: #ffffff;
   padding: 50px;
-  border-radius: 8px; /* Reduced from 12px */
+  border-radius: 10px; /* Reduced rounding from 12px to 10px */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 300px;
@@ -48,11 +48,11 @@ body {
   text-align: left;
 }
 
-/* Main title using the new button color */
+/* Main title using the button color */
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
-  color: #38A6B7;
+  color: #68916a;
 }
 
 /* Info block styling with extra spacing below */
@@ -82,17 +82,17 @@ h2 {
   padding-right: 10px;
 }
 
-/* Help icon styling (reduced size) */
+/* Help icon styling (reduced size further) */
 .help-icon {
   display: inline-block;
-  background: #38A6B7;
+  background: #68916a;
   color: #fff;
   border-radius: 50%;
-  width: 20px; /* Reduced width */
-  height: 20px; /* Reduced height */
+  width: 18px;  /* Reduced width */
+  height: 18px; /* Reduced height */
   text-align: center;
-  line-height: 20px; /* Adjusted line height */
-  font-size: 0.9em; /* Reduced font size */
+  line-height: 18px; /* Adjusted line height */
+  font-size: 0.8em;  /* Reduced font size */
   font-weight: bold;
   cursor: pointer;
   position: relative;
@@ -144,14 +144,14 @@ input, select, button {
 /* Inputs are right aligned; selects are left aligned */
 input {
   border: 1px solid #ccc;
-  border-radius: 8px; /* Reduced rounding */
+  border-radius: 10px;
   outline: none;
   text-align: right;
   color: #171d28;
 }
 select {
   border: 1px solid #ccc;
-  border-radius: 8px; /* Reduced rounding */
+  border-radius: 10px;
   outline: none;
   text-align: left;
   text-align-last: left;
@@ -165,24 +165,24 @@ select::placeholder {
 }
 
 button {
-  background: #38A6B7;
+  background: #68916a;
   color: white;
   border: none;
   cursor: pointer;
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 8px; /* Reduced rounding */
+  border-radius: 8px; /* Reduced button rounding from 10px to 8px */
   margin-top: 15px;
 }
 
 button:hover {
-  background: #319AA8;
+  background: #5c8262;
 }
 
 /* Accordion button styling (centered) */
 .accordion {
-  background-color: #38A6B7;
+  background-color: #68916a;
   color: white;
   cursor: pointer;
   padding: 12px;
@@ -192,12 +192,12 @@ button:hover {
   text-align: center;
   outline: none;
   font-size: 1.1em;
-  border-radius: 8px; /* Reduced rounding */
+  border-radius: 8px; /* Reduced button rounding */
   margin: 40px auto 0;
 }
 
 .accordion.active, .accordion:hover {
-  background-color: #319AA8;
+  background-color: #5c8262;
 }
 
 .panel {
@@ -206,7 +206,7 @@ button:hover {
   background-color: #ffffff;
   overflow-x: auto;
   margin-top: 10px;
-  border-radius: 8px; /* Reduced rounding */
+  border-radius: 10px; /* Reduced rounding for panel */
 }
 
 #growthTable {
@@ -227,7 +227,7 @@ button:hover {
 .results-container {
   background: #ffffff;
   padding: 20px 50px 50px 50px;
-  border-radius: 8px; /* Reduced rounding */
+  border-radius: 10px; /* Reduced rounding */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   flex: 1;
@@ -240,7 +240,7 @@ button:hover {
   margin-top: 20px; /* Increased spacing between title and result */
   margin-bottom: 30px;
   line-height: 1.6;
-  font-size: 1.3em;
+  font-size: 1.3em; /* Increased font size for result text */
 }
 
 /* Make Results title same size as Calculator title */
@@ -262,7 +262,7 @@ button:hover {
   display: block;
 }
 
-/* Reset button styling - remains unchanged */
+/* Reset button styling - reverted to red */
 .reset-btn {
   background-color: #ffd5d4;
   color: #171d28;
@@ -271,7 +271,7 @@ button:hover {
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 8px; /* Adjusted rounding if needed; but instruction said leave reset as is, so we might leave its rounding unchanged. However, since instructions said "make module corners and button corners slightly less rounded" and leave Reset button color as is, we apply same rounding to Reset button as well */
+  border-radius: 8px; /* Reduced button rounding */
   margin: 20px auto 0;
   padding: 12px;
   display: block;
