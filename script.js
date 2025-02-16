@@ -15,9 +15,26 @@ function calculateInterest() {
     return;
   }
 
-  // Use default compounding frequency of annual (n = 1)
+  // Dynamically generate a random title for the Results module
+  const resultTitles = [
+    "Well, would you look at that...",
+    "The numbers are in!",
+    "You're on the path to riches!",
+    "Your future self is thanking you!",
+    "Holy smokes!",
+    "Let your money do the work!",
+    "Small steps today, big results tomorrow",
+    "Here's how your wealth stacks up",
+    "Your investments are working hard",
+    "Your future is shaping up nicely",
+    "Patience pays off - here's the proof"
+  ];
+  const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
+  document.querySelector(".results h2").innerText = randomTitle;
+
+  // Set compounding frequency to annual by default (n = 1)
   let n = 1;
-  let f = depositFrequency; // deposit frequency remains dynamic
+  let f = depositFrequency;
   let t = years;
   let r = rate;
 
@@ -49,25 +66,8 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-  // Dynamically generate a random title for the results module
-  const resultTitles = [
-    "Well, would you look at that...",
-    "The numbers are in!",
-    "You're on the path to riches!",
-    "Your future self is thanking you!",
-    "Holy smokes!",
-    "Let your money do the work!",
-    "Small steps today, big results tomorrow",
-    "Here's how your wealth stacks up",
-    "Your investments are working hard",
-    "Your future is shaping up nicely",
-    "Patience pays off - here's the proof"
-  ];
-  const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
-  document.querySelector(".results h2").innerText = randomTitle;
-
-  // Display result message with the future investment value highlighted and additional sentence on a new line
+  
+  // Display the result message: future investment value highlighted and extra sentence on new line
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
@@ -193,7 +193,6 @@ function resetCalculator() {
   document.getElementById("rate").value = "";
   document.getElementById("years").value = "";
   document.getElementById("contributionFrequency").selectedIndex = 0;
-  document.getElementById("compounds").selectedIndex = 0;
   document.getElementById("resultsContainer").style.display = "none";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
