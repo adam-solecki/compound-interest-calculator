@@ -1,9 +1,9 @@
 function calculateInterest() {
-  // Retrieve and sanitize input values
   let principalRaw = document.getElementById("principal").value.replace(/[^0-9.]/g, '');
   let contributionRaw = document.getElementById("contribution").value.replace(/[^0-9.]/g, '');
   let rateRaw = document.getElementById("rate").value.replace(/[^0-9.]/g, '');
   let years = parseFloat(document.getElementById("years").value);
+  let compounds = parseInt(document.getElementById("compounds").value);
   let depositFrequency = parseInt(document.getElementById("contributionFrequency").value);
 
   let principal = parseFloat(principalRaw) || 0;
@@ -32,9 +32,8 @@ function calculateInterest() {
   const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
   document.querySelector(".results h2").innerText = randomTitle;
 
-  // Set compounding frequency to annual by default (n = 1)
-  let n = 1;
-  let f = depositFrequency;
+  let n = compounds; // compounding frequency per year
+  let f = depositFrequency; // deposits per year
   let t = years;
   let r = rate;
 
@@ -55,10 +54,12 @@ function calculateInterest() {
 
   for (let i = 0; i <= t; i++) {
     let tempAmount = principal * Math.pow((1 + r / n), (n * i));
+    
     for (let j = 1; j <= i * f; j++) {
       let yearsRemaining = (i * f - j) / f;
       tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
     }
+
     totalDeposits = principal + contribution * f * i;
     investmentValues.push(tempAmount);
     depositValues.push(totalDeposits);
@@ -66,8 +67,7 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  
-  // Display the result message: future investment value highlighted and extra sentence on new line
+  // Update result message: bold the investment value and place the extra sentence on a new line with extra spacing.
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
@@ -193,6 +193,7 @@ function resetCalculator() {
   document.getElementById("rate").value = "";
   document.getElementById("years").value = "";
   document.getElementById("contributionFrequency").selectedIndex = 0;
+  document.getElementById("compounds").selectedIndex = 0;
   document.getElementById("resultsContainer").style.display = "none";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
