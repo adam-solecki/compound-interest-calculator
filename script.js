@@ -65,7 +65,8 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Display the result message with the future investment value highlighted and the extra sentence on a new line with increased spacing.
+  // Display the result message with the highlighted future investment value.
+  // The additional sentence is moved to a new line with extra spacing.
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
