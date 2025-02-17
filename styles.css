@@ -180,7 +180,7 @@ button:hover {
   background: #5c8262;
 }
 
-/* Accordion button styling (left aligned) */
+/* Accordion button styling (center aligned) */
 .accordion {
   background-color: #68916a;
   color: white;
@@ -189,7 +189,7 @@ button:hover {
   min-width: 220px;
   white-space: nowrap;
   border: none;
-  text-align: left; /* Left align text */
+  text-align: center; /* Center aligned */
   outline: none;
   font-size: 1.1em;
   border-radius: 8px; /* Reduced button rounding */
@@ -262,7 +262,7 @@ button:hover {
   display: block;
 }
 
-/* Reset button styling - reverted to red, left aligned */
+/* Reset button styling - reverted to red, center aligned */
 .reset-btn {
   background-color: #ffd5d4;
   color: #171d28;
@@ -272,10 +272,11 @@ button:hover {
   font-size: 1.1em;
   transition: background 0.3s;
   border-radius: 8px; /* Reduced button rounding */
-  margin: 20px 0 0 0; /* Left align */
+  margin: 20px 0 0 0; /* Center aligned */
   padding: 12px;
   display: block;
   min-width: 250px;
+  text-align: center;
 }
 .reset-btn:hover {
   background-color: #ffc2c0;
