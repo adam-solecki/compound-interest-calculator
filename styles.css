@@ -39,7 +39,7 @@ body {
 
 /* Field wrapper for consistent spacing */
 .field {
-  margin-bottom: 20px;
+  margin-bottom: 25px; /* Increased spacing between variables */
 }
 
 /* Left align main title and info block */
@@ -165,7 +165,7 @@ select::placeholder {
 }
 
 button {
-  background: #68916a;
+  background: #000000; /* Changed button color to black */
   color: white;
   border: none;
   cursor: pointer;
@@ -177,19 +177,19 @@ button {
 }
 
 button:hover {
-  background: #5c8262;
+  background: #5c8262; /* Keeping hover from previous styling; adjust if needed */
 }
 
 /* Accordion button styling (center aligned) */
 .accordion {
-  background-color: #68916a;
+  background-color: #000000; /* Changed to black */
   color: white;
   cursor: pointer;
   padding: 12px;
   min-width: 220px;
   white-space: nowrap;
   border: none;
-  text-align: center; /* Center aligned */
+  text-align: center;
   outline: none;
   font-size: 1.1em;
   border-radius: 8px; /* Reduced button rounding */
@@ -237,7 +237,7 @@ button:hover {
 }
 
 .results-container #result {
-  margin-top: 30px; /* Increased spacing between title and result */
+  margin-top: 40px; /* Increased spacing between title and result */
   margin-bottom: 30px;
   line-height: 1.6;
   font-size: 1.3em; /* Increased font size for result text */
@@ -272,7 +272,7 @@ button:hover {
   font-size: 1.1em;
   transition: background 0.3s;
   border-radius: 8px; /* Reduced button rounding */
-  margin: 20px 0 0 0; /* Center aligned */
+  margin: 20px 0 0 0;
   padding: 12px;
   display: block;
   min-width: 250px;
