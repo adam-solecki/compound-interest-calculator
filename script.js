@@ -1,113 +1,209 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Compound Interest Calculator</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
-</head>
-<body>
-  <div class="main-wrapper">
-    <div class="container calculator">
-      <h2>Compound Interest Calculator</h2>
+function calculateInterest() {
+  let principalRaw = document.getElementById("principal").value.replace(/[^0-9.]/g, '');
+  let contributionRaw = document.getElementById("contribution").value.replace(/[^0-9.]/g, '');
+  let rateRaw = document.getElementById("rate").value.replace(/[^0-9.]/g, '');
+  let years = parseFloat(document.getElementById("years").value);
+  let compounds = parseInt(document.getElementById("compounds").value);
+  let depositFrequency = parseInt(document.getElementById("contributionFrequency").value);
 
-      <div class="info">
-        <p>The compound interest calculator will help you understand:</p>
-        <ul>
-          <li>how compounding increases your wealth</li>
-          <li>the difference between saving now and saving later</li>
-        </ul>
-      </div>
+  let principal = parseFloat(principalRaw) || 0;
+  let contribution = parseFloat(contributionRaw) || 0;
+  let rate = parseFloat(rateRaw) / 100 || 0; // Convert percentage to decimal
 
-      <div class="field">
-        <label for="principal">Starting investment ($):</label>
-        <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)" />
-      </div>
+  if (isNaN(principal) || isNaN(contribution) || isNaN(rate) || isNaN(years)) {
+    alert("Please enter valid numbers.");
+    return;
+  }
 
-      <div class="field">
-        <label for="contribution">Regular contribution ($):</label>
-        <input type="text" id="contribution" placeholder="$0" required oninput="formatCurrency(this)" />
-      </div>
+  // Dynamically generate a random title for the Results module
+  const resultTitles = [
+    "Well, would you look at that...",
+    "The numbers are in!",
+    "You're on the path to riches!",
+    "Your future self is thanking you!",
+    "Holy smokes!",
+    "Let your money do the work!",
+    "Small steps today, big results tomorrow",
+    "Here's how your wealth stacks up",
+    "Your investments are working hard",
+    "Your future is shaping up nicely",
+    "Patience pays off - here's the proof"
+  ];
+  const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
+  document.querySelector(".results h2").innerText = randomTitle;
 
-      <div class="field">
-        <label for="contributionFrequency">How often you add money:</label>
-        <select id="contributionFrequency">
-          <option value="1">annually</option>
-          <option value="12">monthly</option>
-          <option value="26">fortnightly</option>
-          <option value="52">weekly</option>
-          <option value="365">daily</option>
-        </select>
-      </div>
+  let n = compounds; // compounding frequency per year
+  let f = depositFrequency; // deposits per year
+  let t = years;
+  let r = rate;
 
-      <div class="field">
-        <div class="label-container">
-          <label for="rate">Expected annual interest rate (%):</label>
-          <span class="help-icon">?</span>
-          <div class="tooltip-text">
-            We recommend using an interest rate that reflects your funds average annual returns.
-            If unsure, consider the historical averages:
-            <ul>
-              <li>3-5% for conservative funds</li>
-              <li>6-8% for balanced funds</li>
-              <li>9-12% for growth funds</li>
-            </ul>
-            Past performance does not guarantee future returns. Consult a financial advisor for advice.
-          </div>
-        </div>
-        <input type="text" id="rate" placeholder="0%" required onfocus="removePercentage(this)" onblur="formatPercentage(this)" />
-      </div>
+  // Calculate final amount for the starting investment
+  let finalAmount = principal * Math.pow((1 + r / n), (n * t));
 
-      <div class="field">
-        <label for="years">Investment duration (years):</label>
-        <input type="text" id="years" placeholder="enter years" required />
-      </div>
+  // Add compounded contributions over time
+  for (let i = 1; i <= t * f; i++) {
+    let yearsRemaining = (t * f - i) / f;
+    finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
+  }
 
-      <div class="field">
-        <label for="compounds">How often interest compounds:</label>
-        <select id="compounds">
-          <option value="1">annually</option>
-          <option value="12">monthly</option>
-          <option value="52">weekly</option>
-          <option value="365">daily</option>
-        </select>
-      </div>
+  // Prepare arrays for the graph and table
+  let investmentValues = [];
+  let depositValues = [];
+  let yearsArray = [];
+  let totalDeposits = principal;
 
-      <button onclick="calculateInterest()">Calculate my future wealth</button>
-    </div>
+  for (let i = 0; i <= t; i++) {
+    let tempAmount = principal * Math.pow((1 + r / n), (n * i));
+    for (let j = 1; j <= i * f; j++) {
+      let yearsRemaining = (i * f - j) / f;
+      tempAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
+    }
+    totalDeposits = principal + contribution * f * i;
+    investmentValues.push(tempAmount);
+    depositValues.push(totalDeposits);
+    yearsArray.push(i.toString());
+  }
 
-    <div class="container results" id="resultsContainer" style="display: none;">
-      <h2>Your results</h2>
-      <p id="result"></p>
+  let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // Display the result message on one line, with the future investment value highlighted in a color matching the Reset button.
+  // The additional sentence is moved to a new line with extra spacing.
+  document.getElementById("result").innerHTML = 
+    `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
-      <div class="chart-container">
-        <canvas id="investmentChart"></canvas>
-      </div>
+  // Populate the growth table
+  let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
+  tableBody.innerHTML = "";
+  for (let i = 0; i < yearsArray.length; i++) {
+    let interestEarned = investmentValues[i] - depositValues[i];
+    let row = `<tr>
+      <td>${yearsArray[i]}</td>
+      <td>$${depositValues[i].toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+      <td>$${interestEarned.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+      <td>$${investmentValues[i].toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+    </tr>`;
+    tableBody.innerHTML += row;
+  }
 
-      <!-- Accordion button placed beneath the graph -->
-      <button class="accordion">Show breakdown table</button>
-      <div class="panel">
-        <table id="growthTable">
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th>Total deposit</th>
-              <th>Interest earned</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Table rows will be populated by script.js -->
-          </tbody>
-        </table>
-      </div>
+  document.getElementById("resultsContainer").style.display = "block";
+  drawChart(yearsArray, investmentValues, depositValues);
+}
 
-      <!-- Reset button placed beneath the table -->
-      <button class="reset-btn" onclick="resetCalculator()">Reset</button>
-    </div>
-  </div>
+function drawChart(labels, investmentData, depositData) {
+  let chartContainer = document.querySelector(".chart-container");
+  chartContainer.style.marginLeft = "0";
+  chartContainer.style.marginRight = "0";
+  chartContainer.style.display = "block";
 
-  <script src="script.js"></script>
-</body>
-</html>
+  let ctx = document.getElementById("investmentChart").getContext("2d");
+  if (window.myChart) {
+    window.myChart.destroy();
+  }
+  window.myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Total investment value ($)',
+          data: investmentData,
+          borderColor: '#27372d',
+          backgroundColor: 'rgba(39,55,45,0.2)',
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          tension: 0.3
+        },
+        {
+          label: 'Total deposits ($)',
+          data: depositData,
+          borderColor: '#68916a',
+          backgroundColor: 'rgba(104,145,106,0.2)',
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderDash: [5, 5]
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      aspectRatio: 2.5,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          displayColors: false,
+          mode: 'index',
+          intersect: false,
+          bodyFont: { size: 10 },
+          titleFont: { size: 10 },
+          callbacks: {
+            title: function (tooltipItems) {
+              return `Year ${tooltipItems[0].label}`;
+            },
+            label: function (tooltipItem) {
+              if (tooltipItem.datasetIndex !== 0) return null;
+              let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
+              let deposits = depositData[tooltipItem.dataIndex];
+              return [
+                `Investment total: $${investment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+                `Deposit total: $${deposits.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+              ];
+            }
+          }
+        }
+      },
+      scales: {
+        x: { 
+          title: { display: true, text: 'Years' },
+          ticks: { padding: 10 }
+        },
+        y: { 
+          title: { display: false },
+          ticks: { 
+            padding: 10,
+            callback: function(value) { 
+              return '$' + value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+function formatCurrency(input) {
+  let value = input.value.replace(/[^0-9.]/g, '');
+  input.value = value ? "$" + parseFloat(value).toLocaleString() : "$0";
+}
+
+function formatPercentage(input) {
+  let value = input.value.replace(/[^0-9.]/g, '');
+  input.value = value ? value + "%" : "0%";
+}
+
+function removePercentage(input) {
+  input.value = input.value.replace(/[%]/g, '');
+}
+
+function resetCalculator() {
+  document.getElementById("principal").value = "";
+  document.getElementById("contribution").value = "";
+  document.getElementById("rate").value = "";
+  document.getElementById("years").value = "";
+  document.getElementById("contributionFrequency").selectedIndex = 0;
+  document.getElementById("compounds").selectedIndex = 0;
+  document.getElementById("resultsContainer").style.display = "none";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  var acc = document.getElementsByClassName("accordion");
+  for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    });
+  }
+});
