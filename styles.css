@@ -30,7 +30,7 @@ body {
 .container {
   background: #ffffff;
   padding: 50px;
-  border-radius: 10px; /* Reduced rounding from 12px to 10px */
+  border-radius: 10px; /* Reduced rounding */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
   min-width: 300px;
@@ -82,7 +82,7 @@ h2 {
   padding-right: 10px;
 }
 
-/* Help icon styling (reduced size further) */
+/* Help icon styling (reduced further) */
 .help-icon {
   display: inline-block;
   background: #68916a;
@@ -172,7 +172,7 @@ button {
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 8px; /* Reduced button rounding from 10px to 8px */
+  border-radius: 8px; /* Reduced button rounding */
   margin-top: 15px;
 }
 
@@ -180,7 +180,7 @@ button:hover {
   background: #5c8262;
 }
 
-/* Accordion button styling (centered) */
+/* Accordion button styling (left aligned) */
 .accordion {
   background-color: #68916a;
   color: white;
@@ -189,11 +189,11 @@ button:hover {
   min-width: 220px;
   white-space: nowrap;
   border: none;
-  text-align: center;
+  text-align: left; /* Left align text */
   outline: none;
   font-size: 1.1em;
   border-radius: 8px; /* Reduced button rounding */
-  margin: 40px auto 0;
+  margin: 40px 0 0 0;
 }
 
 .accordion.active, .accordion:hover {
@@ -237,7 +237,7 @@ button:hover {
 }
 
 .results-container #result {
-  margin-top: 20px; /* Increased spacing between title and result */
+  margin-top: 30px; /* Increased spacing between title and result */
   margin-bottom: 30px;
   line-height: 1.6;
   font-size: 1.3em; /* Increased font size for result text */
@@ -262,7 +262,7 @@ button:hover {
   display: block;
 }
 
-/* Reset button styling - reverted to red */
+/* Reset button styling - reverted to red, left aligned */
 .reset-btn {
   background-color: #ffd5d4;
   color: #171d28;
@@ -272,7 +272,7 @@ button:hover {
   font-size: 1.1em;
   transition: background 0.3s;
   border-radius: 8px; /* Reduced button rounding */
-  margin: 20px auto 0;
+  margin: 20px 0 0 0; /* Left align */
   padding: 12px;
   display: block;
   min-width: 250px;
