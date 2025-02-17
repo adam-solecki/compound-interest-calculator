@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compound Interest Calculator</title>
+  <!-- Make sure Forma DJR is loaded (via local install or webfont import) -->
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
@@ -20,7 +21,7 @@
         </ul>
       </div>
 
-      <!-- Increased spacing between fields using the .field class in CSS -->
+      <!-- Increased spacing between each field -->
       <div class="field">
         <label for="principal">Starting investment ($):</label>
         <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)" />
@@ -75,20 +76,18 @@
         </select>
       </div>
 
-      <!-- Updated button text and style -->
       <button onclick="calculateInterest()">Calculate</button>
     </div>
 
     <div class="container results" id="resultsContainer" style="display: none;">
       <h2>Your results</h2>
-      <!-- Increased spacing between title and result text via CSS -->
       <p id="result"></p>
 
       <div class="chart-container">
         <canvas id="investmentChart"></canvas>
       </div>
 
-      <!-- Accordion button (renamed "Show breakdown table") with left-aligned text -->
+      <!-- Accordion button with left-aligned text -->
       <button class="accordion">Show breakdown table</button>
       <div class="panel">
         <table id="growthTable">
