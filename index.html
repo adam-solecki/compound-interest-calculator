@@ -20,6 +20,7 @@
         </ul>
       </div>
 
+      <!-- Increased spacing between fields using the .field class in CSS -->
       <div class="field">
         <label for="principal">Starting investment ($):</label>
         <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)" />
@@ -74,18 +75,20 @@
         </select>
       </div>
 
-      <button onclick="calculateInterest()">Calculate my future wealth</button>
+      <!-- Updated button text and style -->
+      <button onclick="calculateInterest()">Calculate</button>
     </div>
 
     <div class="container results" id="resultsContainer" style="display: none;">
       <h2>Your results</h2>
+      <!-- Increased spacing between title and result text via CSS -->
       <p id="result"></p>
 
       <div class="chart-container">
         <canvas id="investmentChart"></canvas>
       </div>
 
-      <!-- Accordion button placed beneath the graph -->
+      <!-- Accordion button (renamed "Show breakdown table") with left-aligned text -->
       <button class="accordion">Show breakdown table</button>
       <div class="panel">
         <table id="growthTable">
@@ -103,7 +106,7 @@
         </table>
       </div>
 
-      <!-- Reset button placed beneath the table -->
+      <!-- Reset button -->
       <button class="reset-btn" onclick="resetCalculator()">Reset</button>
     </div>
   </div>
