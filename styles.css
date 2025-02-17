@@ -39,7 +39,7 @@ body {
 
 /* Field wrapper for consistent spacing */
 .field {
-  margin-bottom: 25px; /* Increased spacing between variables */
+  margin-bottom: 25px; /* Increased spacing between fields */
 }
 
 /* Left align main title and info block */
@@ -48,11 +48,11 @@ body {
   text-align: left;
 }
 
-/* Main title using the button color */
+/* Main title using black for both modules */
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
-  color: #68916a;
+  color: #000000; /* Changed to black */
 }
 
 /* Info block styling with extra spacing below */
@@ -65,7 +65,7 @@ h2 {
 }
 .info ul {
   margin: 0;
-  padding-left: 20px; /* Increased bullet indent */
+  padding-left: 20px;
 }
 
 /* Label container for interest rate with help icon */
@@ -88,11 +88,11 @@ h2 {
   background: #68916a;
   color: #fff;
   border-radius: 50%;
-  width: 18px;  /* Reduced width */
-  height: 18px; /* Reduced height */
+  width: 18px;
+  height: 18px;
   text-align: center;
-  line-height: 18px; /* Adjusted line height */
-  font-size: 0.8em;  /* Reduced font size */
+  line-height: 18px;
+  font-size: 0.8em;
   font-weight: bold;
   cursor: pointer;
   position: relative;
@@ -115,7 +115,7 @@ h2 {
   z-index: 10;
 }
 .tooltip-text ul {
-  padding-left: 15px; /* Increased bullet indent */
+  padding-left: 15px;
 }
 
 /* Show tooltip on hover */
@@ -164,20 +164,24 @@ select::placeholder {
   color: #e0e0e0;
 }
 
+/* General button styling - for black buttons */
 button {
-  background: #000000; /* Changed button color to black */
+  background: #000000; /* Changed to black */
   color: white;
   border: none;
   cursor: pointer;
   font-weight: normal;
   font-size: 1.1em;
-  transition: background 0.3s;
-  border-radius: 8px; /* Reduced button rounding */
+  transition: background 0.3s, border 0.3s, color 0.3s;
+  border-radius: 8px;
   margin-top: 15px;
 }
 
+/* On hover, black buttons turn white with a thick black border and black text */
 button:hover {
-  background: #5c8262; /* Keeping hover from previous styling; adjust if needed */
+  background: #ffffff;
+  border: 3px solid #000000;
+  color: #000000;
 }
 
 /* Accordion button styling (center aligned) */
@@ -192,21 +196,24 @@ button:hover {
   text-align: center;
   outline: none;
   font-size: 1.1em;
-  border-radius: 8px; /* Reduced button rounding */
+  border-radius: 8px;
   margin: 40px 0 0 0;
 }
 
 .accordion.active, .accordion:hover {
-  background-color: #5c8262;
+  background: #ffffff;
+  border: 3px solid #000000;
+  color: #000000;
 }
 
+/* Panel styling */
 .panel {
   padding: 0 18px;
   display: none;
   background-color: #ffffff;
   overflow-x: auto;
   margin-top: 10px;
-  border-radius: 10px; /* Reduced rounding for panel */
+  border-radius: 10px;
 }
 
 #growthTable {
@@ -227,28 +234,28 @@ button:hover {
 .results-container {
   background: #ffffff;
   padding: 20px 50px 50px 50px;
-  border-radius: 10px; /* Reduced rounding */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   text-align: left;
   flex: 1;
   min-width: 300px;
   max-width: 55%;
-  margin-top: 15px; /* Reduced margin */
+  margin-top: 15px;
 }
 
 .results-container #result {
   margin-top: 40px; /* Increased spacing between title and result */
   margin-bottom: 30px;
   line-height: 1.6;
-  font-size: 1.3em; /* Increased font size for result text */
+  font-size: 1.3em;
 }
 
-/* Make Results title same size as Calculator title */
+/* Results title styling (set to black) */
 .results-container h3,
 .results-container h2 {
   font-size: 2em;
   margin-bottom: 15px;
-  color: #27372d;
+  color: #000000; /* Changed to black */
   text-align: left;
 }
 
@@ -262,7 +269,7 @@ button:hover {
   display: block;
 }
 
-/* Reset button styling - reverted to red, center aligned */
+/* Reset button styling - remains unchanged */
 .reset-btn {
   background-color: #ffd5d4;
   color: #171d28;
@@ -271,7 +278,7 @@ button:hover {
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 8px; /* Reduced button rounding */
+  border-radius: 8px;
   margin: 20px 0 0 0;
   padding: 12px;
   display: block;
