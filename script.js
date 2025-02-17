@@ -8,14 +8,14 @@ function calculateInterest() {
 
   let principal = parseFloat(principalRaw) || 0;
   let contribution = parseFloat(contributionRaw) || 0;
-  let rate = parseFloat(rateRaw) / 100 || 0; // Convert percentage to decimal
+  let rate = parseFloat(rateRaw) / 100 || 0;
 
   if (isNaN(principal) || isNaN(contribution) || isNaN(rate) || isNaN(years)) {
     alert("Please enter valid numbers.");
     return;
   }
 
-  // Dynamically generate a random title for the Results module
+  // Generate a random title for the Results module
   const resultTitles = [
     "Well, would you look at that...",
     "The numbers are in!",
@@ -32,21 +32,17 @@ function calculateInterest() {
   const randomTitle = resultTitles[Math.floor(Math.random() * resultTitles.length)];
   document.querySelector(".results h2").innerText = randomTitle;
 
-  let n = compounds; // compounding frequency per year
-  let f = depositFrequency; // deposits per year
+  let n = compounds;
+  let f = depositFrequency;
   let t = years;
   let r = rate;
 
-  // Calculate final amount for the starting investment
   let finalAmount = principal * Math.pow((1 + r / n), (n * t));
-
-  // Add compounded contributions over time
   for (let i = 1; i <= t * f; i++) {
     let yearsRemaining = (t * f - i) / f;
     finalAmount += contribution * Math.pow((1 + r / n), yearsRemaining * n);
   }
 
-  // Prepare arrays for the graph and table
   let investmentValues = [];
   let depositValues = [];
   let yearsArray = [];
@@ -65,12 +61,10 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Display the result message with the highlighted future investment value.
-  // The additional sentence is moved to a new line with extra spacing.
+  // Display the result message: the future investment value is highlighted and both sentences are on separate lines.
   document.getElementById("result").innerHTML = 
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
-  // Populate the growth table
   let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
   tableBody.innerHTML = "";
   for (let i = 0; i < yearsArray.length; i++) {
