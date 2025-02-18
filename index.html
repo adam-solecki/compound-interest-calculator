@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compound Interest Calculator</title>
-  <!-- Make sure Forma DJR is loaded (via local install or webfont import) -->
+  <!-- Ensure Forma DJR is available -->
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
@@ -21,7 +21,6 @@
         </ul>
       </div>
 
-      <!-- Increased spacing between each field -->
       <div class="field">
         <label for="principal">Starting investment ($):</label>
         <input type="text" id="principal" placeholder="$0" required oninput="formatCurrency(this)" />
@@ -81,13 +80,14 @@
 
     <div class="container results" id="resultsContainer" style="display: none;">
       <h2>Your results</h2>
+      <!-- Increased top margin for the result text -->
       <p id="result"></p>
 
       <div class="chart-container">
         <canvas id="investmentChart"></canvas>
       </div>
 
-      <!-- Accordion button with left-aligned text -->
+      <!-- Accordion button -->
       <button class="accordion">Show breakdown table</button>
       <div class="panel">
         <table id="growthTable">
@@ -100,12 +100,11 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Table rows will be populated by script.js -->
+            <!-- Rows populated by script.js -->
           </tbody>
         </table>
       </div>
 
-      <!-- Reset button -->
       <button class="reset-btn" onclick="resetCalculator()">Reset</button>
     </div>
   </div>
