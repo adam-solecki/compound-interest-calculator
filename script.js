@@ -15,7 +15,7 @@ function calculateInterest() {
     return;
   }
 
-  // Randomize the Results title
+  // Generate a random title for the Results module
   const resultTitles = [
     "Well, would you look at that...",
     "The numbers are in!",
@@ -131,10 +131,10 @@ function drawChart(labels, investmentData, depositData) {
           bodyFont: { size: 10 },
           titleFont: { size: 10 },
           callbacks: {
-            title: function(tooltipItems) {
+            title: function (tooltipItems) {
               return `Year ${tooltipItems[0].label}`;
             },
-            label: function(tooltipItem) {
+            label: function (tooltipItem) {
               if (tooltipItem.datasetIndex !== 0) return null;
               let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
               let deposits = depositData[tooltipItem.dataIndex];
@@ -147,15 +147,15 @@ function drawChart(labels, investmentData, depositData) {
         }
       },
       scales: {
-        x: {
+        x: { 
           title: { display: true, text: 'Years' },
           ticks: { padding: 10 }
         },
-        y: {
+        y: { 
           title: { display: false },
-          ticks: {
+          ticks: { 
             padding: 10,
-            callback: function(value) {
+            callback: function(value) { 
               return '$' + value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             }
           }
