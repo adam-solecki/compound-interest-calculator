@@ -15,7 +15,7 @@ function calculateInterest() {
     return;
   }
 
-  // Generate a random title for the Results module
+  // Randomize the Results title
   const resultTitles = [
     "Well, would you look at that...",
     "The numbers are in!",
@@ -61,8 +61,7 @@ function calculateInterest() {
   }
 
   let formattedAmount = finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  // Display the result message: the future investment value is highlighted and both sentences are on separate lines.
-  document.getElementById("result").innerHTML = 
+  document.getElementById("result").innerHTML =
     `In ${years} years, your investment will be worth: <span class="highlight">$${formattedAmount}</span>.<br><br>Let's see how your money works for you over time.`;
 
   let tableBody = document.getElementById("growthTable").getElementsByTagName("tbody")[0];
@@ -89,9 +88,7 @@ function drawChart(labels, investmentData, depositData) {
   chartContainer.style.display = "block";
 
   let ctx = document.getElementById("investmentChart").getContext("2d");
-  if (window.myChart) {
-    window.myChart.destroy();
-  }
+  if (window.myChart) { window.myChart.destroy(); }
   window.myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -103,8 +100,9 @@ function drawChart(labels, investmentData, depositData) {
           borderColor: '#27372d',
           backgroundColor: 'rgba(39,55,45,0.2)',
           borderWidth: 2,
-          pointRadius: 4,
-          pointHoverRadius: 6,
+          fill: true,
+          pointRadius: 0,
+          pointHoverRadius: 0,
           tension: 0.3
         },
         {
@@ -113,8 +111,9 @@ function drawChart(labels, investmentData, depositData) {
           borderColor: '#68916a',
           backgroundColor: 'rgba(104,145,106,0.2)',
           borderWidth: 2,
-          pointRadius: 4,
-          pointHoverRadius: 6,
+          fill: true,
+          pointRadius: 0,
+          pointHoverRadius: 0,
           borderDash: [5, 5]
         }
       ]
@@ -132,10 +131,10 @@ function drawChart(labels, investmentData, depositData) {
           bodyFont: { size: 10 },
           titleFont: { size: 10 },
           callbacks: {
-            title: function (tooltipItems) {
+            title: function(tooltipItems) {
               return `Year ${tooltipItems[0].label}`;
             },
-            label: function (tooltipItem) {
+            label: function(tooltipItem) {
               if (tooltipItem.datasetIndex !== 0) return null;
               let investment = tooltipItem.dataset.data[tooltipItem.dataIndex];
               let deposits = depositData[tooltipItem.dataIndex];
@@ -148,15 +147,15 @@ function drawChart(labels, investmentData, depositData) {
         }
       },
       scales: {
-        x: { 
+        x: {
           title: { display: true, text: 'Years' },
           ticks: { padding: 10 }
         },
-        y: { 
+        y: {
           title: { display: false },
-          ticks: { 
+          ticks: {
             padding: 10,
-            callback: function(value) { 
+            callback: function(value) {
               return '$' + value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             }
           }
