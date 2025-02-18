@@ -15,7 +15,6 @@ function calculateInterest() {
     return;
   }
 
-  // Generate a random title for the Results module
   const resultTitles = [
     "Well, would you look at that...",
     "The numbers are in!",
