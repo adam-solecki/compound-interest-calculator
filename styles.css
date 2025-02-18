@@ -164,20 +164,20 @@ select::placeholder {
   color: #e0e0e0;
 }
 
-/* General button styling - for black buttons */
+/* General button styling */
 button {
-  background: #000000; /* Changed to black */
+  background: #000000; /* Black background */
   color: white;
   border: none;
   cursor: pointer;
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s, border 0.3s, color 0.3s;
-  border-radius: 8px;
+  border-radius: 8px; /* Reduced rounding */
   margin-top: 15px;
 }
 
-/* On hover, black buttons turn white with a thick black border and black text */
+/* On hover, buttons turn white with a thick black border and black text */
 button:hover {
   background: #ffffff;
   border: 3px solid #000000;
@@ -186,7 +186,7 @@ button:hover {
 
 /* Accordion button styling (center aligned) */
 .accordion {
-  background-color: #000000; /* Changed to black */
+  background-color: #000000; /* Black background */
   color: white;
   cursor: pointer;
   padding: 12px;
@@ -196,7 +196,7 @@ button:hover {
   text-align: center;
   outline: none;
   font-size: 1.1em;
-  border-radius: 8px;
+  border-radius: 8px; /* Reduced rounding */
   margin: 40px 0 0 0;
 }
 
@@ -213,7 +213,7 @@ button:hover {
   background-color: #ffffff;
   overflow-x: auto;
   margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 10px; /* Reduced rounding */
 }
 
 #growthTable {
@@ -234,8 +234,8 @@ button:hover {
 .results-container {
   background: #ffffff;
   padding: 20px 50px 50px 50px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  border-radius: 10px; /* Reduced rounding */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   flex: 1;
   min-width: 300px;
@@ -250,7 +250,7 @@ button:hover {
   font-size: 1.3em;
 }
 
-/* Results title styling (set to black) */
+/* Results title styling */
 .results-container h3,
 .results-container h2 {
   font-size: 2em;
@@ -259,7 +259,7 @@ button:hover {
   text-align: left;
 }
 
-/* Chart container: expand fully within the Results module */
+/* Chart container */
 .chart-container {
   margin: 20px 10px 0;
   width: 100%;
@@ -269,7 +269,7 @@ button:hover {
   display: block;
 }
 
-/* Reset button styling - remains unchanged */
+/* Reset button styling */
 .reset-btn {
   background-color: #ffd5d4;
   color: #171d28;
@@ -278,7 +278,7 @@ button:hover {
   font-weight: normal;
   font-size: 1.1em;
   transition: background 0.3s;
-  border-radius: 8px;
+  border-radius: 8px; /* Reduced rounding */
   margin: 20px 0 0 0;
   padding: 12px;
   display: block;
@@ -289,7 +289,7 @@ button:hover {
   background-color: #ffc2c0;
 }
 
-/* Highlight style for future investment value */
+/* Highlight style for investment value */
 .highlight {
   background-color: #ffd5d4;
   padding: 2px 4px;
